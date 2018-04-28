@@ -8,7 +8,7 @@ public class User {
 	String pwd;
 	String access;
 	Connection conn;
-	HashMap<String, Profile> profiles = new HashMap<String, Profile>(20);
+	public HashMap<String, Profile> profiles = new HashMap<String, Profile>(20);
 	public User(Connection conn, String email, String pwd, String access) {
 		this.conn = conn;
 		this.email = email;

@@ -47,7 +47,7 @@ public class LogInServlet extends HttpServlet {
 		String email = req.getParameter("email");
 		String pwd = req.getParameter("pwd");
 		try {
-			validateCustomer(res,email, pwd);
+			validateCustomer(req, res,email, pwd);
 		} catch (SQLException e) {
 			System.out.println("Validate Customer Exception thrown");
 			e.printStackTrace();
@@ -56,7 +56,7 @@ public class LogInServlet extends HttpServlet {
 	}
 	
 	//validate the Customer users
-	protected void validateCustomer(HttpServletResponse res, String email, String pwd) 
+	protected void validateCustomer(HttpServletRequest req, HttpServletResponse res, String email, String pwd) 
 			throws ServletException, IOException, SQLException {
 		DBConnectionManager DBcon = new DBConnectionManager();
 		String sql = "select * from person where Email=? and Password=?";
@@ -88,7 +88,9 @@ public class LogInServlet extends HttpServlet {
 				newProfile.ProfileID = pR.getString("LastModDate");
 				user.profiles.put(newProfile.ProfileID, newProfile);
 			}
-			res.sendRedirect("profile.jsp");
+			req.setAttribute("user", user);
+			req.setAttribute("valid", valid);
+			req.getRequestDispatcher("profile.jsp").forward(req, res);
 		}
 		else {
 			valid = false;
