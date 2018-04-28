@@ -15,7 +15,7 @@ import java.sql.SQLException;
 @WebServlet("/LogInServlet")
 public class LogInServlet extends HttpServlet {
 //	private static final long serialVersionUID = 1L;
-
+	public boolean valid = true;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -65,14 +65,20 @@ public class LogInServlet extends HttpServlet {
 		st.setString(2, pwd);
 		ResultSet result = st.executeQuery();
 		if(result.next()) {
-			User newUser = new User(DBcon.conn, email, pwd, "Customer");
-			// have to pull up the corresponding profile based on the user.
-//			sql = "select * from profile where OwnerSSN=?";
-//			PreparedStatement st1 = DBcon.conn.prepareStatement(sql);
-//			st1.setString(1, newUser.email);
+			User user = new User(DBcon.conn, email, pwd, "Customer");
+			
+			// pulling up corresponding profiles based on the user.
+			sql = "select * from profile where OwnerSSN = (select SSN from person where Email =?)";
+			PreparedStatement st1 = DBcon.conn.prepareStatement(sql);
+			st1.setString(1, user.email);
+			System.out.println("number of updates" + st1.getUpdateCount());
+//			st1.executeQuery();
+			
+			
 			res.sendRedirect("profile.jsp");
 		}
 		else {
+			valid = false;
 			System.out.println("Email or password is invalid.");
 		}
 	}
