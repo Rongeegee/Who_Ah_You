@@ -32,12 +32,12 @@
     <h1 class="title">Login</h1>
     <form>
       <div class="input-container">
-        <input type="text" id="label" name ="id" required="required"/>
+        <input type="text" id="label" name ="email" required="required"/>
         <label for="label">Username</label>
         <div class="bar"></div>
       </div>
       <div class="input-container">
-        <input type="password" id="label" name = "password" required="required"/>
+        <input type="password" id="label" name = "pwd" required="required"/>
         <label for="label">Password</label>
         <div class="bar"></div>
       </div>

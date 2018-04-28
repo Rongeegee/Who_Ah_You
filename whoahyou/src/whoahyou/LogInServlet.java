@@ -6,21 +6,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 /**
  * Servlet implementation class LogInServlet
  */
 @WebServlet("/LogInServlet")
 public class LogInServlet extends HttpServlet {
 //	private static final long serialVersionUID = 1L;
-       
-//	protected void idAndpwd(HttpServletRequest req, HttpServletResponse res) {
-//		String id = req.getParameter("id");
-//		String pwd = req.getParameter("password");
-//		
-//		System.out.println(id + " and " + pwd);
-//	}
-	
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -34,28 +29,52 @@ public class LogInServlet extends HttpServlet {
     	System.out.println(method);
     	if(method.equals("POST"))
     		this.doPost(req,res);
-    	else if(method.equals("GET"))
-    		this.doGet(req, res);
+//    	else if(method.equals("GET"))
+//    		this.doGet(req, res);
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		res.getWriter().append("Served at: ").append(req.getContextPath());
-	}
-
+//	/**
+//	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+//	 */
+//	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+//		// TODO Auto-generated method stub
+//		res.getWriter().append("Served at: ").append(req.getContextPath());
+//	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String id = req.getParameter("id");
-		String pwd = req.getParameter("password");
-		res.sendRedirect("profile.jsp");
-		System.out.println("this is post " + id + " and " + pwd);
+		String email = req.getParameter("email");
+		String pwd = req.getParameter("pwd");
+		try {
+			validateCustomer(res,email, pwd);
+		} catch (SQLException e) {
+			System.out.println("Validate Customer Exception thrown");
+			e.printStackTrace();
+		}
+		System.out.println("this is post " + email + " and " + pwd);
 		
+	}
+	
+	//validate the Customer users
+	protected void validateCustomer(HttpServletResponse res, String email, String pwd) throws ServletException, IOException, SQLException {
+		DBConnectionManager DBcon = new DBConnectionManager();
+		String sql = "select * from person where Email=? and Password=?";
+		PreparedStatement st = DBcon.conn.prepareStatement(sql);
+		st.setString(1, email);
+		st.setString(2, pwd);
+		ResultSet result = st.executeQuery();
+		if(result.next()) {
+			User newUser = new User(DBcon.conn, email, pwd, "Customer");
+			// have to pull up the corresponding profile based on the user.
+//			sql = "select * from profile where OwnerSSN=?";
+//			PreparedStatement st1 = DBcon.conn.prepareStatement(sql);
+//			st1.setString(1, newUser.email);
+			res.sendRedirect("profile.jsp");
+		}
+		else {
+			System.out.println("Email or password is invalid.");
+		}
 	}
 
 }
