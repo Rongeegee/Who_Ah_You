@@ -53,11 +53,11 @@ public class LogInServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		System.out.println("this is post " + email + " and " + pwd);
-		
 	}
 	
 	//validate the Customer users
-	protected void validateCustomer(HttpServletResponse res, String email, String pwd) throws ServletException, IOException, SQLException {
+	protected void validateCustomer(HttpServletResponse res, String email, String pwd) 
+			throws ServletException, IOException, SQLException {
 		DBConnectionManager DBcon = new DBConnectionManager();
 		String sql = "select * from person where Email=? and Password=?";
 		PreparedStatement st = DBcon.conn.prepareStatement(sql);
@@ -66,15 +66,28 @@ public class LogInServlet extends HttpServlet {
 		ResultSet result = st.executeQuery();
 		if(result.next()) {
 			User user = new User(DBcon.conn, email, pwd, "Customer");
-			
 			// pulling up corresponding profiles based on the user.
 			sql = "select * from profile where OwnerSSN = (select SSN from person where Email =?)";
 			PreparedStatement st1 = DBcon.conn.prepareStatement(sql);
 			st1.setString(1, user.email);
-			System.out.println("number of updates" + st1.getUpdateCount());
-//			st1.executeQuery();
-			
-			
+			ResultSet pR = st1.executeQuery();
+			while(pR.next()) {
+				Profile newProfile = new Profile();
+				newProfile.ProfileID = pR.getString("ProfileID");
+				newProfile.OwnerSSN = pR.getString("OwnerSSN");
+				newProfile.DatingRangeStart = Integer.parseInt(pR.getString("DatingAgeRangeStart"));
+				newProfile.DatingRangeEnd = Integer.parseInt(pR.getString("DatingAgeRangeEnd"));
+				newProfile.DatinGeoRange = Integer.parseInt(pR.getString("DatinGeoRange"));
+				newProfile.Age = Integer.parseInt(pR.getString("Age"));
+				newProfile.ProfileID = pR.getString("M_F");
+				newProfile.ProfileID = pR.getString("Hobbies");
+				newProfile.height = Integer.parseInt(pR.getString("Height"));
+				newProfile.weight = Integer.parseInt(pR.getString("Weight"));
+				newProfile.ProfileID = pR.getString("HairColor");
+				newProfile.ProfileID = pR.getString("CreationDate");
+				newProfile.ProfileID = pR.getString("LastModDate");
+				user.profiles.put(newProfile.ProfileID, newProfile);
+			}
 			res.sendRedirect("profile.jsp");
 		}
 		else {
@@ -82,5 +95,4 @@ public class LogInServlet extends HttpServlet {
 			System.out.println("Email or password is invalid.");
 		}
 	}
-
 }
