@@ -32,59 +32,74 @@
   <div class="card"></div>
   <div class="card">
     <h1 class="title">One more step. We just need more of your information.</h1>
-    <form>
-      <div class="input-container">
-        <input type="text" id="label" required="required"/>
-        <label for="label">first name</label>
+    <form method = post action = newAccount>
+    <div class="input-container">
+        <input type="email" name = "email"id="label" required="required"/> 
+        <label for="label">Email</label>
         <div class="bar"></div>
       </div>
       <div class="input-container">
-        <input type="text" id="label" required="required"/>
-        <label for="label">last name</label>
+        <input type="password" name = "pwd" id="label" required="required"/> 
+        <label for="label">Password</label>
+        <div class="bar"></div>
+      </div>
+      <div class="input-container">
+        <input type="password" name = "confirmPwd" id="label" required="required"/> 
+        <label for="label">Confirm password</label>
+        <div class="bar"></div>
+      </div>
+      <div class="input-container">
+        <input type="text" name = "firstName"id="label" required="required"/> 
+        <label for="label">First Name</label>
+        <div class="bar"></div>
+      </div>
+      <div class="input-container">
+        <input type="text" name = "lastName" id="label" required="required"/>
+        <label for="label">Last Name</label>
         <div class="bar"></div>
       </div>
 	 
 	  <div class="input-container">
-			<input type="text" id="label" required="required"/>
-			<label for="label">street address</label>
+			<input type="text" name = "street" id="label" required="required"/>
+			<label for="label">Street</label>
 			<div class="bar"></div>
         <div class="bar"></div>
       </div>
 	  <div class="input-container">
-			<input type="text" id="label" required="required"/>
-			<label for="label">apt #</label>
+			<input type="text" name = "city" id="label" required="required"/>
+			<label for="label">City</label>
 			<div class="bar"></div>
         <div class="bar"></div>
       </div>
 	  <div class="input-container">
-			<input type="text" id="label" required="required"/>
-			<label for="label">state</label>
+			<input type="text" name = "state" id="label" required="required"/>
+			<label for="label">State</label>
 			<div class="bar"></div>
         <div class="bar"></div>
 				
         <div class="bar"></div>
       </div>  
 	  <div class="input-container">
-			<input type="text" id="label" required="required"/>
-			<label for="label">zip</label>
+			<input type="text" name = "zip" id="label" required="required"/>
+			<label for="label">Zip code</label>
 			<div class="bar"></div>
         <div class="bar"></div>
       </div>
       <div class="input-container">
-			<input type="text" id="label" required="required"/>
-			<label for="label">telephone</label>
+			<input type="text" name = "phone" id="label" required="required"/>
+			<label for="label">Phone</label>
 			<div class="bar"></div>
         <div class="bar"></div>
       </div>
 	  <div class="input-container">
-			<input type="text" id="label" required="required"/>
-			<label for="label">email</label>
+			<input type="text" name="SSN" id="label" required="required"/>
+			<label for="label">SSN (XXX-XX-XXXX)</label>
 			<div class="bar"></div>
         <div class="bar"></div>
       </div>
 	  <div class="input-container">
-			<input type="text" id="label" required="required"/>
-			<label for="label">credit card account#</label>
+			<input type="text" name="cardNum" id="label" required="required"/>
+			<label for="label">Card #</label>
 			<div class="bar"></div>
         <div class="bar"></div>
       </div>
@@ -106,7 +121,7 @@
 	  
 	  
 	  <div class="button-container">
-        <button><span>finish</span></button>
+        	<button type= "submit"><span>finish</span></button>
       </div>     
     </form>
   </div>

@@ -1,8 +1,12 @@
 package whoahyou;
 
 import java.sql.Connection;
-import java.util.*;
 
+import java.util.*;
+import javax.servlet.annotation.WebServlet;
+
+
+@WebServlet("/User")
 public class User {
 	String email;
 	String pwd;
@@ -15,4 +19,12 @@ public class User {
 		this.pwd = pwd;
 		this.access = access;
 	}
+	
 }
+
+
+
+
+
+
+

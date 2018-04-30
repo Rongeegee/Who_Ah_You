@@ -6,8 +6,8 @@ import java.sql.Connection;
 // This class provides the connection to the database
 
 public class DBConnectionManager {
-	protected Connection conn;
-	protected DBConnectionManager() {
+	public Connection conn;
+	public DBConnectionManager() {
 		String user = "root";
 		String pwd = "whoahyou";
 		try {
