@@ -59,7 +59,7 @@ public class LogInServlet extends HttpServlet {
 	protected void validateCustomer(HttpServletRequest req, HttpServletResponse res, String email, String pwd) 
 			throws ServletException, IOException, SQLException {
 		DBConnectionManager DBcon = new DBConnectionManager();
-		String sql = "select * from person where Email=? and Password=?";
+		String sql = "select * from  where Email=? and Password=?";
 		PreparedStatement st = DBcon.conn.prepareStatement(sql);
 		st.setString(1, email);
 		st.setString(2, pwd);
