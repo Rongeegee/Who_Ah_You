@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 /**
  * Servlet implementation class LogInServlet
  */
@@ -71,6 +73,7 @@ public class LogInServlet extends HttpServlet {
 			PreparedStatement st1 = DBcon.conn.prepareStatement(sql);
 			st1.setString(1, user.email);
 			ResultSet pR = st1.executeQuery();
+			// creating profiles for the user
 			while(pR.next()) {
 				Profile newProfile = new Profile();
 				newProfile.ProfileID = pR.getString("ProfileID");
@@ -79,17 +82,22 @@ public class LogInServlet extends HttpServlet {
 				newProfile.DatingRangeEnd = Integer.parseInt(pR.getString("DatingAgeRangeEnd"));
 				newProfile.DatinGeoRange = Integer.parseInt(pR.getString("DatinGeoRange"));
 				newProfile.Age = Integer.parseInt(pR.getString("Age"));
-				newProfile.ProfileID = pR.getString("M_F");
-				newProfile.ProfileID = pR.getString("Hobbies");
-				newProfile.height = Integer.parseInt(pR.getString("Height"));
-				newProfile.weight = Integer.parseInt(pR.getString("Weight"));
-				newProfile.ProfileID = pR.getString("HairColor");
-				newProfile.ProfileID = pR.getString("CreationDate");
-				newProfile.ProfileID = pR.getString("LastModDate");
-				user.profiles.put(newProfile.ProfileID, newProfile);
+				newProfile.Gender = pR.getString("M_F");
+				newProfile.Hobbies = pR.getString("Hobbies");
+				newProfile.Height = Integer.parseInt(pR.getString("Height"));
+				newProfile.Weight = Integer.parseInt(pR.getString("Weight"));
+				newProfile.HairColor = pR.getString("HairColor");
+				newProfile.CreationDate = pR.getDate("CreationDate");
+				newProfile.LastModDate = pR.getDate("LastModDate");
+				newProfile.picPath = "images/profileImg/" + newProfile.ProfileID + ".jpg";
+				System.out.println(newProfile.picPath);
+				user.profiles.add(newProfile);
 			}
-			req.setAttribute("user", user);
-			req.setAttribute("valid", valid);
+			//setting up the image path for the profiles to display on profile.jsp
+	    	//HashMap<String, Profile> profiles = user.profiles;
+	    	//req.setAttribute("profiles", profiles); // (name, value)
+	    	//System.out.println(user.profiles.get(0).picPath);
+			req.setAttribute("profiles",user.profiles);
 			req.getRequestDispatcher("profile.jsp").forward(req, res);
 		}
 		else {

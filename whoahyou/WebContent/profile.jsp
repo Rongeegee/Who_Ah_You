@@ -1,7 +1,8 @@
-<%@page import="whoahyou.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
+
+
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
@@ -34,26 +35,18 @@
 	<div class="card"></div>
   <div class="card">
     <h1 class="title">Profile(s)</h1>
-    <%@ page import User, Profile%>
-    <%
-    	User user = (User)request.getAttribute("profiles");
-    	//List<String> picPaths = new List<String>();
-    	for(String key : user.profiles.keySet()){
-    		String picPath = "/img/" + key + ".jpg";
-    		
-    	}
-    	
-    	   
-    	
-    %>
-    <a href="#"><div class="proImgBlock"><img src="images/defaultProfile.jpg" class="defProImg"><h2 class ="profileName">user</h2></div></a>
-		<a href="#"><div class="proImgBlock"><img src="images/defaultProfile.jpg" class="defProImg"><h2 class ="profileName">user</h2></div></a>
-		<a href="#"><div class="proImgBlock"><img src="images/defaultProfile.jpg" class="defProImg"><h2 class ="profileName">user</h2></div></a>
-		<a href="#"><div class="proImgBlock"><img src="images/defaultProfile.jpg" class="defProImg"><h2 class ="profileName">user</h2></div></a>
-		<a href="#"><div class="proImgBlock"><img src="images/defaultProfile.jpg" class="defProImg"><h2 class ="profileName">user</h2></div></a>
-		<a href="#"><div class="proImgBlock"><img src="images/defaultProfile.jpg" class="defProImg"><h2 class ="profileName">user</h2></div></a>
-		<a href="#"><div class="proImgBlock"><img src="images/defaultProfile.jpg" class="defProImg"><h2 class ="profileName">user</h2></div></a>
-		<a href="#"><div class="proImgBlock"><img src="images/defaultProfile.jpg" class="defProImg"><h2 class ="profileName">user</h2></div></a>
+    <%@ page import ="java.util.*"%>
+    <%@ page import = "whoahyou.Profile" %>
+    <%@ page import = "javax.servlet.http.HttpServletRequest" %>
+    <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %> 
+    <% 
+    	List<Profile> profiles = (ArrayList<Profile>) request.getAttribute("profiles");
+     %>
+    <!--  generating forloop to display the pictures -->
+    <c:forEach var = "pro" items = "<%=profiles %>">
+    <a href="${pro.getPicPath()}" ><div class="proImgBlock"><img src= <c:out value = "${pro.getPicPath()}"/> class="defProImg"/><h2 class ="profileName"> <c:out value = "${pro.getProfileID()}" /></h2></div></a>
+	</c:forEach>
+		<!--  this addButton has to be a button -->
 		<a href="#"><div class="proImgBlock"><img src="images/addButton.jpg" class="defProImg"><h2 class ="profileName">new profile</h2></div></a>
 	<button value = ${valid}> </button>
   </div>

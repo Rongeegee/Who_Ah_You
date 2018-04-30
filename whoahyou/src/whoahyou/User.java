@@ -1,14 +1,14 @@
 package whoahyou;
 
 import java.sql.Connection;
-import java.util.HashMap;
+import java.util.*;
 
 public class User {
 	String email;
 	String pwd;
 	String access;
 	Connection conn;
-	public HashMap<String, Profile> profiles = new HashMap<String, Profile>(20); // key = email
+	public List<Profile> profiles = new ArrayList<Profile>(20); // key = email
 	public User(Connection conn, String email, String pwd, String access) {
 		this.conn = conn;
 		this.email = email;

@@ -3,6 +3,7 @@ package whoahyou;
 import java.sql.*;
 import java.sql.Connection;
 
+// This class provides the connection to the database
 
 public class DBConnectionManager {
 	protected Connection conn;

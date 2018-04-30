@@ -20,18 +20,24 @@ public class Profile {
 	int DatingRangeEnd;
 	int DatinGeoRange;
 	int Age;
-	String gender;
+	String Gender;
 	String Hobbies;
-	int height;
-	int weight;
-	String haircolor;
-	Date creationDate;
-	Date lastModDate;
+	int Height;
+	int Weight;
+	String HairColor;
+	Date CreationDate;
+	Date LastModDate;
+	String picPath;
 	ArrayList<Profile> possibleMatches = new ArrayList<Profile>();
 	public Profile() {
 		
 	}
-	
+	public String getPicPath() {
+		return this.picPath;
+	}
+	public String getProfileID() {
+		return this.ProfileID;
+	}
 	protected void getMatches() throws ServletException, IOException, SQLException{
 			DBConnectionManager DBcon = new DBConnectionManager();
 			String sql = "select * from profile where Age >= ? or Age <= ?";
@@ -54,13 +60,13 @@ public class Profile {
 				newProfile.DatingRangeEnd = Integer.parseInt(pR.getString("DatingAgeRangeEnd"));
 				newProfile.DatinGeoRange = Integer.parseInt(pR.getString("DatinGeoRange"));
 				newProfile.Age = Integer.parseInt(pR.getString("Age"));
-				newProfile.ProfileID = pR.getString("M_F");
-				newProfile.ProfileID = pR.getString("Hobbies");
-				newProfile.height = Integer.parseInt(pR.getString("Height"));
-				newProfile.weight = Integer.parseInt(pR.getString("Weight"));
-				newProfile.ProfileID = pR.getString("HairColor");
-				newProfile.ProfileID = pR.getString("CreationDate");
-				newProfile.ProfileID = pR.getString("LastModDate");
+				newProfile.Gender = pR.getString("M_F");
+				newProfile.Hobbies = pR.getString("Hobbies");
+				newProfile.Height = Integer.parseInt(pR.getString("Height"));
+				newProfile.Weight = Integer.parseInt(pR.getString("Weight"));
+				newProfile.HairColor = pR.getString("HairColor");
+				newProfile.CreationDate = pR.getDate("CreationDate");
+				newProfile.LastModDate = pR.getDate("LastModDate");
 			}
 			System.out.println(this.possibleMatches);
 		}
