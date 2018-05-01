@@ -1,3 +1,4 @@
+package whoahyou;
 
 
 import java.io.IOException;
@@ -36,7 +37,7 @@ public class newAccount extends HttpServlet {
 		try {
 			makeAccount(req, res);
 		} catch (SQLException e) {
-			System.out.println("Validate Customer Exception thrown");
+			System.out.println("Make Account Exception is thrown");
 			e.printStackTrace();
 		}
 	}
@@ -62,11 +63,10 @@ public class newAccount extends HttpServlet {
 				java.sql.Date date=new java.sql.Date(millis);  
 				System.out.println(date);
 				//open up db to add new user/account/person
-				DBConnectionManager DBcon = new DBConnectionManager();
 				//insert into person
 				String sql = "insert into person (SSN,Password,FirstName,LastName,Street,City,State,Zipcode,Email,Telephone) "
 						+ "values (?,?,?,?,?,?,?,?,?,?)";
-				PreparedStatement personSt = DBcon.conn.prepareStatement(sql);  
+				PreparedStatement personSt = conn.prepareStatement(sql);  
 				personSt.setString(1, ssn);
 				personSt.setString(2, pwd);
 				personSt.setString(3, firstName);
@@ -81,14 +81,13 @@ public class newAccount extends HttpServlet {
 				
 				//insert into account
 				
-				sql = "insert into accoount (OwnerSSN,CardNumber,AcctNum,AcctCreationDate) values (?,?,?,?)";
+				sql = "insert into account (OwnerSSN,CardNumber,AcctNum,AcctCreationDate) values (?,?,?,?)";
 				PreparedStatement accountSt = DBcon.conn.prepareStatement(sql);
 				accountSt.setString(1, ssn);
 				accountSt.setLong(2, cardNum);
 				accountSt.setString(3, firstName);
 				accountSt.setDate(4, date);
 				accountSt.executeUpdate(sql);
-			
 		return true;
 	}
 //	/**
