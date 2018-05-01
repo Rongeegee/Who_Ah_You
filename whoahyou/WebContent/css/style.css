@@ -130,6 +130,14 @@ body {
   transition-delay: .7s;
 }
 
+#errorLoginMes{
+	color:red;
+	text-align:center;
+	top:-20px;
+	margin-bottom:30px;
+	font-size:18px;
+	display:none;
+}
 
 /*"I am an employee" log in text*/
 .employLogIn{
@@ -558,4 +566,221 @@ body {
 .profileName{
 	text-align:center;
 	margin-top:-10px;
+}
+
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+
+/*the following is for the profile page (after user click on a profile)*/
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* the following CSS codes are for the profile page (after user clicks and enters a profile)*/
+.tabPane{
+	background-color:#FCDBBE;
+}
+
+#dateButton {
+  background: #6a31d4;
+  background-image: -webkit-linear-gradient(top, #6a31d4, #a52bb8);
+  background-image: -moz-linear-gradient(top, #6a31d4, #a52bb8);
+  background-image: -ms-linear-gradient(top, #6a31d4, #a52bb8);
+  background-image: -o-linear-gradient(top, #6a31d4, #a52bb8);
+  background-image: linear-gradient(to bottom, #6a31d4, #a52bb8);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 1px;
+  text-shadow: 0px 1px 3px #1010e6;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 30px;
+  padding: 11px 40px 11px 40px;
+  text-decoration: none;
+  width:390.8px;
+  margin-left:3px;
+}
+
+#dateButton:hover {
+  background: #E97A18;
+  background-image: -webkit-linear-gradient(top, #E97A18, #E97A18);
+  background-image: -moz-linear-gradient(top, #E97A18, #E97A18);
+  background-image: -ms-linear-gradient(top, #E97A18, #E97A18);
+  background-image: -o-linear-gradient(top, #E97A18, #E97A18);
+  background-image: linear-gradient(to bottom, #E97A18, #E97A18);
+  text-decoration: none;
+}
+
+#likeButton {
+  background: #E53E30;
+  background-image: -webkit-linear-gradient(top, #E53E30, #E53E30);
+  background-image: -moz-linear-gradient(top, #E53E30, #E53E30);
+  background-image: -ms-linear-gradient(top, #E53E30, #E53E30);
+  background-image: -o-linear-gradient(top, #E53E30, #E53E30);
+  background-image: linear-gradient(to bottom, #E53E30, #E53E30);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 1px;
+  text-shadow: 0px 1px 3px #1010e6;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 30px;
+  padding: 11px 40px 11px 40px;
+  text-decoration: none;
+   width:390.8px;
+  margin-left:3px;
+}
+
+#likeButton:hover {
+  background: #E97A18;
+  background-image: -webkit-linear-gradient(top, #E97A18, #E97A18);
+  background-image: -moz-linear-gradient(top, #E97A18, #E97A18);
+  background-image: -ms-linear-gradient(top, #E97A18, #E97A18);
+  background-image: -o-linear-gradient(top, #E97A18, #E97A18);
+  background-image: linear-gradient(to bottom, #E97A18, #E97A18);
+  text-decoration: none;
+}
+
+#discoverButton {
+  background: #E53E30;
+  background-image: -webkit-linear-gradient(top, #E53E30, #E53E30);
+  background-image: -moz-linear-gradient(top, #E53E30, #E53E30);
+  background-image: -ms-linear-gradient(top, #E53E30, #E53E30);
+  background-image: -o-linear-gradient(top, #E53E30, #E53E30);
+  background-image: linear-gradient(to bottom, #E53E30, #E53E30);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 1px;
+  text-shadow: 0px 1px 3px #1010e6;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 30px;
+  padding: 11px 40px 11px 40px;
+  text-decoration: none;
+  width:390.8px;
+  margin-left:1px;
+}
+
+#discoverButton:hover {
+  background: #E97A18;
+  background-image: -webkit-linear-gradient(top, #E97A18, #E97A18);
+  background-image: -moz-linear-gradient(top, #E97A18, #E97A18);
+  background-image: -ms-linear-gradient(top, #E97A18, #E97A18);
+  background-image: -o-linear-gradient(top, #E97A18, #E97A18);
+  background-image: linear-gradient(to bottom, #E97A18, #E97A18);
+  text-decoration: none;
+}
+
+
+#discoverButton {
+  background: #29A598;
+  background-image: -webkit-linear-gradient(top, #29A598, #29A598);
+  background-image: -moz-linear-gradient(top, #29A598, #29A598);
+  background-image: -ms-linear-gradient(top, #29A598, #29A598);
+  background-image: -o-linear-gradient(top, #29A598, #29A598);
+  background-image: linear-gradient(to bottom, #29A598, #29A598);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 1px;
+  text-shadow: 0px 1px 3px #1010e6;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 30px;
+  padding: 11px 40px 11px 40px;
+  text-decoration: none;
+   width:390.5px;
+  margin-left:1px;
+}
+
+#discoverButton:hover {
+  background: #E97A18;
+  background-image: -webkit-linear-gradient(top, #E97A18, #E97A18);
+  background-image: -moz-linear-gradient(top, #E97A18, #E97A18);
+  background-image: -ms-linear-gradient(top, #E97A18, #E97A18);
+  background-image: -o-linear-gradient(top, #E97A18, #E97A18);
+  background-image: linear-gradient(to bottom, #E97A18, #E97A18);
+  text-decoration: none;
+}
+
+
+
+.dateInfoBlock{
+	width:120px;
+	text-align:center;
+	margin:30px;
+	display:inline-block;
+}
+
+
+
+.dateImg{
+	height:160px;
+	width:170px;
+	margin:10px;
+
+}
+
+/** for the like page**/
+
+#likeHeading{
+	margin-top: 20px;
+	margin-bottom:32px;
+	margin-left:12px;
+	text-shadow:1px 1px 1px rgba(122,220,255,1);
+	font-weight:normal;
+	color:#EE1D0B;
+	background-color:#FFFFFF;
+	letter-spacing:0pt;
+	word-spacing:4pt;
+	font-size:39px;
+	text-align:left;
+	font-family:comic sans, comic sans ms, cursive, verdana, arial, sans-serif;
+	line-height:1;
+}
+
+#dateHeading{
+	margin-top: 20px;
+	margin-bottom:32px;
+	margin-left:12px;
+	text-shadow:1px 1px 1px rgba(122,220,255,1);
+	font-weight:normal;
+	color:#B40BEE;
+	background-color:#FFFFFF;
+	letter-spacing:0pt;
+	word-spacing:4pt;
+	font-size:39px;
+	text-align:left;
+	font-family:comic sans, comic sans ms, cursive, verdana, arial, sans-serif;
+	line-height:1;
+}
+
+.InfoBlock{
+	width:120px;
+	text-align:center;
+	margin:30px;
+	display:inline-block;
+	color:#000000;
+	font-size:15px;
+	font-family:tahoma, verdana, arial, sans-serif;
+}
+
+
+
+.likerImg{
+	height:160px;
+	width:170px;
+	margin:10px;
+	
 }
