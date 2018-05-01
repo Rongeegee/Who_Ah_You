@@ -66,7 +66,7 @@ public class newAccount extends HttpServlet {
 				//insert into person
 				String sql = "insert into person (SSN,Password,FirstName,LastName,Street,City,State,Zipcode,Email,Telephone) "
 						+ "values (?,?,?,?,?,?,?,?,?,?)";
-				PreparedStatement personSt = DBcon.conn.prepareStatement(sql);  
+				PreparedStatement personSt = conn.prepareStatement(sql);  
 				personSt.setString(1, ssn);
 				personSt.setString(2, pwd);
 				personSt.setString(3, firstName);
