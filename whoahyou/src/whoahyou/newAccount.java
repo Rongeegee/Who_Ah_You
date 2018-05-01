@@ -19,7 +19,7 @@ import whoahyou.DBConnectionManager;
  */
 @WebServlet("/newAccount")
 public class newAccount extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+	//private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -37,7 +37,7 @@ public class newAccount extends HttpServlet {
 		try {
 			makeAccount(req, res);
 		} catch (SQLException e) {
-			System.out.println("Make Account Exception is thrown");
+			System.out.println("Validate Customer Exception thrown");
 			e.printStackTrace();
 		}
 	}
@@ -63,10 +63,11 @@ public class newAccount extends HttpServlet {
 				java.sql.Date date=new java.sql.Date(millis);  
 				System.out.println(date);
 				//open up db to add new user/account/person
+				DBConnectionManager DBcon = new DBConnectionManager();
 				//insert into person
 				String sql = "insert into person (SSN,Password,FirstName,LastName,Street,City,State,Zipcode,Email,Telephone) "
 						+ "values (?,?,?,?,?,?,?,?,?,?)";
-				PreparedStatement personSt = conn.prepareStatement(sql);  
+				PreparedStatement personSt = DBcon.conn.prepareStatement(sql);  
 				personSt.setString(1, ssn);
 				personSt.setString(2, pwd);
 				personSt.setString(3, firstName);
@@ -88,6 +89,7 @@ public class newAccount extends HttpServlet {
 				accountSt.setString(3, firstName);
 				accountSt.setDate(4, date);
 				accountSt.executeUpdate(sql);
+			
 		return true;
 	}
 //	/**
