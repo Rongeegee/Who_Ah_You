@@ -3,6 +3,7 @@ package whoahyou;
 
 import java.io.IOException;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
@@ -37,7 +38,7 @@ public class newAccount extends HttpServlet {
 		try {
 			makeAccount(req, res);
 		} catch (SQLException e) {
-			System.out.println("Validate Customer Exception thrown");
+			System.out.println("Make account esception thrown");
 			e.printStackTrace();
 		}
 	}
@@ -57,7 +58,7 @@ public class newAccount extends HttpServlet {
 				int zip = Integer.parseInt(req.getParameter("zip")) ;
 				String phone = req.getParameter("phone");
 				String ssn = req.getParameter("SSN");
-				long cardNum = Long.parseLong(req.getParameter("cardNum"));
+				String cardNum =req.getParameter("cardNum");
 				//getting current time for account creation time
 				long millis=System.currentTimeMillis();  
 				java.sql.Date date=new java.sql.Date(millis);  
@@ -65,8 +66,7 @@ public class newAccount extends HttpServlet {
 				//open up db to add new user/account/person
 				DBConnectionManager DBcon = new DBConnectionManager();
 				//insert into person
-				String sql = "insert into person (SSN,Password,FirstName,LastName,Street,City,State,Zipcode,Email,Telephone) "
-						+ "values (?,?,?,?,?,?,?,?,?,?)";
+				String sql = "insert into person (SSN,Password,FirstName,LastName,Street,City,State,Zipcode,Email,Telephone) values ('?','?','?','?','?','?','?',?,'?','?');";
 				PreparedStatement personSt = DBcon.conn.prepareStatement(sql);  
 				personSt.setString(1, ssn);
 				personSt.setString(2, pwd);
@@ -78,18 +78,18 @@ public class newAccount extends HttpServlet {
 				personSt.setInt(8, zip);
 				personSt.setString(9, email);
 				personSt.setString(10, phone);
-				personSt.executeUpdate(sql);
-				
+				ResultSet rs = personSt.executeQuery(sql);
+				System.out.println(rs);
 				//insert into account
-				
-				sql = "insert into account (OwnerSSN,CardNumber,AcctNum,AcctCreationDate) values (?,?,?,?)";
+				System.out.println("it gets here");
+				sql = "insert into account (OwnerSSN,CardNumber,AcctNum,AcctCreationDate) values ('?','?','?','?');";
 				PreparedStatement accountSt = DBcon.conn.prepareStatement(sql);
 				accountSt.setString(1, ssn);
-				accountSt.setLong(2, cardNum);
+				accountSt.setString(2, cardNum);
 				accountSt.setString(3, firstName);
 				accountSt.setDate(4, date);
 				accountSt.executeUpdate(sql);
-			
+			System.out.print("everything works");
 		return true;
 	}
 //	/**

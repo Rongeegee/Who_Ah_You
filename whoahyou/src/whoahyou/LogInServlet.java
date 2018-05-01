@@ -69,7 +69,7 @@ public class LogInServlet extends HttpServlet {
 		if(result.next()) {
 			User user = new User(DBcon.conn, email, pwd, "Customer");
 			// pulling up corresponding profiles based on the user.
-			sql = "select * from profile where OwnerSSN = (select SSN from person where Email =?)";
+			sql = "select * from profile where OwnerSSN = (select SSN from person where Email =?);";
 			PreparedStatement st1 = DBcon.conn.prepareStatement(sql);
 			st1.setString(1, user.email);
 			ResultSet pR = st1.executeQuery();
@@ -89,8 +89,9 @@ public class LogInServlet extends HttpServlet {
 				newProfile.HairColor = pR.getString("HairColor");
 				newProfile.CreationDate = pR.getDate("CreationDate");
 				newProfile.LastModDate = pR.getDate("LastModDate");
-				newProfile.picPath = "images/profileImg/" + newProfile.ProfileID + ".jpg";
-				System.out.println(newProfile.picPath);
+					newProfile.picPath = "images/profileImg/" + newProfile.ProfileID + ".jpg";
+					System.out.println(newProfile.picPath);
+				
 				user.profiles.add(newProfile);
 			}
 			//setting up the image path for the profiles to display on profile.jsp
