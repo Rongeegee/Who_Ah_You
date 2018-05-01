@@ -1,5 +1,3 @@
-
-
 $('.toggle').on('click', function() {
   $('.container').stop().addClass('active');
 });
