@@ -166,7 +166,7 @@
 					<h2>user</h2>
 					<h2>18-Year-Old</h2>
 					<h2>20 miles</h2>
-					<h2>6 feets 11 inches<h2> 
+					<h2>6 feet 11 inches<h2> 
 			  </div>
 			  
 			</div>
