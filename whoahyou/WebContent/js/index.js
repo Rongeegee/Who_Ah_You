@@ -1,3 +1,5 @@
+
+
 $('.toggle').on('click', function() {
   $('.container').stop().addClass('active');
 });
@@ -5,6 +7,10 @@ $('.toggle').on('click', function() {
 $('.close').on('click', function() {
   $('.container').stop().removeClass('active');
 });
+
+function loginErrorMessage(){
+	document.getElementById("errorLoginMes").style.display = "block";
+}
 
 
 /**  the following function display a drop down box from a value to another value $**/
@@ -82,8 +88,17 @@ function uploadImg(){
 		fReader.onloadend = function(event){
 		var img = document.getElementById("profilePic");
 		img.src = event.target.result;
-		
+		}
 		//i might need to extract the file path from the code above if needed
 }
 
+//the following function is to build the tab pane
+
+function tab(tab) {
+    var i;
+    var x = document.getElementsByClassName("pane");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+    }
+    document.getElementById(tab).style.display = "block";  
 }
