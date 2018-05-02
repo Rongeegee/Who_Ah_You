@@ -88,9 +88,9 @@ public class like extends HttpServlet{
 			liker.Date_Time = result.getString("Date_Time");
 			System.out.println(result.getString("Liker"));
 			likers.add(liker);
-			String sql = "SELECT "
 		}
 		DBcon.conn.close();
+		req.setAttribute("profileID", );
 		req.setAttribute("likerList",likers);
 		req.getRequestDispatcher("main_activity.jsp").forward(req, res);
 		DBcon.conn.close();
