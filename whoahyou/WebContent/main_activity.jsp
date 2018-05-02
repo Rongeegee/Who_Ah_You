@@ -116,7 +116,9 @@
      		<!--  generating forloop to display the pictures -->
     		<c:forEach var = "pro" items = "<%=likeList %>">
     		<div class="InfoBlock"><img src="images/defaultProfile.jpg" class="likerImg">
-    		<h2> <c:out value = "${pro.getLiker()}" /></h2></div>
+    		<h2> <c:out value = "${pro.getLiker()}" /></h2>
+    		<h2> <c:out value = "${pro.getTime()}" /></h2>
+    		</div>
     		</c:forEach>
 			</div>
 
