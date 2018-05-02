@@ -25,6 +25,9 @@ public class like extends HttpServlet{
 	public String getLiker() {
 		return this.Liker;
 	}
+	public String getTime() {
+		return this.Date_Time;
+	}
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
     	String method = req.getMethod();
     	if(method.equals("POST"))
@@ -77,7 +80,7 @@ public class like extends HttpServlet{
 		ResultSet result = likeSt.executeQuery();
 		System.out.println(result.getFetchSize());
 		List<like> likers = new ArrayList<like>(); // key = email
-
+		List<String>Images = new ArrayList<String>();
 		while(result.next()) {
 			like liker = new like();
 			liker.Liker = result.getString("Liker");
@@ -85,6 +88,7 @@ public class like extends HttpServlet{
 			liker.Date_Time = result.getString("Date_Time");
 			System.out.println(result.getString("Liker"));
 			likers.add(liker);
+			String sql = "SELECT "
 		}
 		DBcon.conn.close();
 		req.setAttribute("likerList",likers);
