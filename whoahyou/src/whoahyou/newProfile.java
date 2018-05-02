@@ -64,7 +64,7 @@ public class newProfile extends HttpServlet {
 		sql = "insert into person (SSN,Password,FirstName,LastName,Street,City,State,Zipcode,Email,Telephone) values (?,?,?,?,?,?,?,?,?,?);";
 		PreparedStatement personSt = DBcon.conn.prepareStatement(sql);  
 		personSt.setString(1, profileID);
-		personSt.setString(2, pwd);
+		personSt.setString(2, profileName);
 		personSt.setString(3, firstName);
 		personSt.setString(4, lastName);
 		personSt.setString(5, street);
