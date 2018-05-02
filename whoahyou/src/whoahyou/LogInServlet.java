@@ -69,7 +69,7 @@ public class LogInServlet extends HttpServlet {
 		if(result.next()) {
 			User user = new User(DBcon.conn, email, pwd, "Customer");
 			// pulling up corresponding profiles based on the user.
-			sql = "select * from profile where OwnerSSN = (select SSN from person where Email =?);";
+			sql = "select * from profile where OwnerSSN = (select SSN from person where Email =?)";
 			PreparedStatement st1 = DBcon.conn.prepareStatement(sql);
 			st1.setString(1, user.email);
 			ResultSet pR = st1.executeQuery();
@@ -98,6 +98,7 @@ public class LogInServlet extends HttpServlet {
 	    	//HashMap<String, Profile> profiles = user.profiles;
 	    	//req.setAttribute("profiles", profiles); // (name, value)
 	    	//System.out.println(user.profiles.get(0).picPath);
+			DBcon.conn.close();
 			req.setAttribute("profiles",user.profiles);
 			req.getRequestDispatcher("profile.jsp").forward(req, res);
 		}
