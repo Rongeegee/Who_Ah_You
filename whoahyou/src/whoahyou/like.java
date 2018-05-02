@@ -86,7 +86,7 @@ public class like extends HttpServlet{
 			System.out.println(result.getString("Liker"));
 			likers.add(liker);
 		}
-		
+		DBcon.conn.close();
 		req.setAttribute("likerList",likers);
 		req.getRequestDispatcher("main_activity.jsp").forward(req, res);
 		return true;

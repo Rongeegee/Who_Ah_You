@@ -54,7 +54,8 @@
 		<!--  this addButton has to be a button -->
 		<a href="NewProfile.jsp"><div class="proImgBlock"><img src="images/addButton.jpg" class="defProImg"><h2 class ="profileName">new profile</h2></div></a>
 	<!-- <button value = ${valid}> </button>  -->
-  </div>
+	<button value = ${valid}> </button>
+</div>
 </div>
 
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>

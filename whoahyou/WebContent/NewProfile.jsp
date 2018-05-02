@@ -15,7 +15,8 @@
 
 </head>
 <body>
-<!-- Mixins-->
+  
+
 <!-- Pen Title-->
 <div class="pen-title">
   <h1>Who-Ah-You</h1><h2>where love starts with <span style="color: #F163FA">"Who-Ah-You"</span></h2>
@@ -23,49 +24,58 @@
   <h2>sign up now to meet the love of your life</h2>
 </div>
 	
-<a style="color:white; fonts-size:30px;"><button  class="pink_button_block" style="margin-left:80%;">&nbsp setting</button></a>
+<a style="color:white;"><button  class="pink_button_block" style="margin-left:80%;">&nbsp setting</button></a>
+	
+	
+<div> </div>	
 
 <div class="big_container">
 	<div class="card"></div>
   <div class="card">
     <h1 class="title">New Profile</h1>
-    <div style="width:30%;margin-left:5%;">
-	<h4 style="font-size:20px">upload a profile image(optional):</h4><br>
-		<img src="images/defaultProfile.jpg" style="height:150px;width:120px;" id = "profilePic">
+	<div style="width:30%;margin-left:5%;">
+	<h4 style="font-size:20px">upload a profile image(optional)</h4><br>
+		<img src="images/defaultProfile.jpg" style="height:150px;width:120px;" id = "profilePic"/>
 		<br><br>
-		<input type="file" name="pic" accept="image/*" id="imgPath">
-		<input type="submit" onclick="uploadImg()" value="submit image">
+		<input type="file" name="pic" accept="image/*" id="imgPath" onchange="uploadImg()">
 		<br><br><br>
 	</div>
       <div class="input-container">
-        <input type="text" id="label" required="required"/>
-        <label for="label">Profile name</label>
+        <input type="text" id="profileID" required >
+        <label for="label">Profile ID</label>
         <div class="bar"></div>
       </div>
+	  <div class="input-container">
+        <input type="text" id="profileName" required >
+        <label for="label">Profile Name(optional)</label>
+        <div class="bar"></div>
+      </div>
+	  
       <div class="input-container">
-		<h6 style="font-size:20px;">age:</h6>
+		<h6 style="font-size:20px;">age</h6>
 		<br>
-		<select class="age"></select>
+		<select class="age" Id="profileAge"><option value="select">select</option></select>
 		<br><br>
         <div class="bar"></div>
       </div>
 	 
 	  <div class="input-container">
-			<input type="text" id="label" required="required"/>
+			<input type="text" id="profileCity" required="required"/>
 			<label for="label">city</label>
 			<div class="bar"></div>
         <div class="bar"></div>
       </div>
 	  <div class="input-container">
-			<input type="text" id="label" required="required"/>
+			<input type="text" id="profileState" required="required"/>
 			<label for="label">state</label>
 			<div class="bar"></div>
         <div class="bar"></div>
       </div>
 	  <div class="input-container">
-		<h6 style="font-size:20px;">gender:</h6>
+		<h6 style="font-size:20px;">gender</h6>
 		<br>
-		  <select>
+		  <select id="profileGender">
+				<option value= "select">select</option>
 				<option value="male">male</option>
 				<option value="female">female</option>
 		  </select>
@@ -75,22 +85,22 @@
         <div class="bar"></div>
       </div>  
 	   <div class="input-container">
-			<h6 style="font-size:20px;">Weight:</h6><br>
-			<select class="weight"></select>
+			<h6 style="font-size:20px;">Weight</h6><br>
+			<select class="weight" id="profileWeight"><option value="select">select</option></select>
 		  <br><br>
         <div class="bar"></div>
       </div>
 	  <div class="input-container">		
-		 <h6 style="font-size:20px;">height:</h6><br>
-		  feet: <select class="feet"></select> inches: <select class="inches"></select>
+		 <h6 style="font-size:20px;">height </h6><br>
+		  feet <select class="feet" id="profileFeet"><option value="select">select</option></select> inches <select ID="profileInches"><option value="select">select</option><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option></select>
 		  <br><br>  
 			<div class="bar"></div>
         <div class="bar"></div>
       </div>
       <div class="input-container">
-	   <h6 style="font-size:20px;">  Interested in people within:</h6>
+	   <h6 style="font-size:20px;">  Interested in people within</h6>
 			<br><br>
-		  <select class="geoRange"></select> mile(s)
+		  <select class="geoRange" Id="profileGeoDatingRange"><option value="select">select</option></select> mile(s)
 		  <br><br>
 		  
 			<div class="bar"></div>
@@ -98,30 +108,29 @@
       </div>
 	  <div class="input-container">
 			<br><br>
-		  <h1 style="font-size:20px;"> Preferred age:</h1><br>
-		  <select class="DatingAgeFrom"></select> to
-		  <select class="DatingAgeFrom"></select>
+		  <h1 style="font-size:20px;"> Preferred age<h1><br>
+		  <select class="DatingAgeFrom" id="datingAgeFrom"><option value="select">select</option></select> to
+		  <select class="DatingAgeFrom" id="datingAgeTo"><option value="select">select</option></select>
 		  <br><br>
 			<div class="bar"></div>
         <div class="bar"></div>
       </div>
-      <div style="margin-left:4.6%;">
+	  
+	  <div style="margin-left:4.6%;">
 	  <p style="font-size:20px;">Use the input and button below to add a hobby:</p>
 		<br>
-		<input type="text" id="hobby"><button onclick="addHobbies()">add</button>
+		<input type="text" id="hobby" style="margin-left:10%;"><button onclick="addHobbies()">add</button>
 		<br><br>
 		<div>
-		<h5 style="font-size:17px;">Hobbies:</h5>
+		<h5 style="font-size:17px; margin-top:-3%">Hobbies:</h5>
 		
-		<ul id="hobby_list" style="font-size:17px;margin-left:55px">
+		<ul id="hobby_list" style="font-size:17px;margin-left:55px;margin-top:2%;">
 		</ul>
 	  </div>
 	</div>
-       <button class="pink_button_block" style="margin-left:40%;margin-top:4%;"><span>next</span></button>
-	  </div>
-	  
+	   <button class="pink_button_block" style="margin-left:40%;margin-top:20%;" onclick="verifyInput()"><span>done</span></button>
+
 	</div>
-	
 	</div>
 	</div>
 	  
@@ -136,6 +145,9 @@
   
 
     <script  src="js/index.js"></script>
+
+
+	
 
 
 	
