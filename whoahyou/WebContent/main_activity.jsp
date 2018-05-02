@@ -36,7 +36,7 @@
 		
 			<div class="tabPane">
 			  <button class="tabButton" onclick="tab('date')" id="dateButton">Dates</button>
-			  <button class="tabButton" onclick="tab('like')" id="likeButton">Likes</button>
+			  <button class="tabButton" onclick="tab('like')" id="likeButton" type = "submit">Likes</button>
 			  <button class="tabButton" onclick="tab('discover')" id="discoverButton">Discover</button>
 			</div>
 
@@ -44,6 +44,7 @@
 			<h2 id="dateHeading">Date:<h2>
 			  <div class="dateBlock">
 				<div class="dateInfoBlock"><img src="images/defaultProfile.jpg" class="dateImg">
+					
 					<h2>user</h2>
 					<h2>date</h2>
 					<h2>time</h2>
@@ -103,26 +104,20 @@
 
 			<div id="like" class="pane" style="display:none">
 			<h1 ID="likeHeading">Like:</h2>
-			  <div class="InfoBlock"><img src="images/defaultProfile.jpg" class="likerImg">
-					<h2>user</h2>
-					<h2>date</h2>
-					<h2>time</h2>
-			  </div>
-			  <div class="InfoBlock"><img src="images/defaultProfile.jpg" class="likerImg">
-					<h2>user</h2>
-					<h2>date</h2>
-					<h2>time</h2>
-				</div>
-				<div class="InfoBlock"><img src="images/defaultProfile.jpg" class="likerImg">
-					<h2>user</h2>
-					<h2>date</h2>
-					<h2>time</h2>
-				</div>
-				<div class="InfoBlock"><img src="images/defaultProfile.jpg" class="likerImg">
-					<h2>user</h2>
-					<h2>date</h2>
-					<h2>time</h2>
-				</div>
+			<%@ page import ="java.util.*"%>
+    		<%@ page import = "whoahyou.like" %>
+    		<%@ page import = "javax.servlet.http.HttpServletRequest" %>
+    		<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %> 
+    		<% 
+
+    		List<like> likeList = (ArrayList<like>) request.getAttribute("likerList");
+    		System.out.println(likeList.size());
+     		%>
+     		<!--  generating forloop to display the pictures -->
+    		<c:forEach var = "pro" items = "<%=likeList %>">
+    		<div class="InfoBlock"><img src="images/defaultProfile.jpg" class="likerImg">
+    		<h2> <c:out value = "${pro.getLiker()}" /></h2></div>
+    		</c:forEach>
 			</div>
 
 			<div id="discover" class="pane" style="display:none">
