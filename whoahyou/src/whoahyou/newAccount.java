@@ -32,13 +32,12 @@ public class newAccount extends HttpServlet {
     }
     protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
     	String method = req.getMethod();
-		//System.out.println(req.getRequestURI()); // /whoahyou/newAccount
     	if(method.equals("POST"))
     		this.doPost(req,res);
     }
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		try {
-			makeAccount(req, res);
+				makeAccount(req, res);
 		} catch (SQLException e) {
 			System.out.println("Make account esception thrown");
 			e.printStackTrace();

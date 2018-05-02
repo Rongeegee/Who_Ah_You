@@ -51,20 +51,19 @@ public class Profile {
 				st.setString(2, Integer.toString(this.DatingRangeEnd));
 				ResultSet pR = st1.executeQuery();
 			while(pR.next()) {
-				Profile newProfile = new Profile();
-				newProfile.ProfileID = pR.getString("ProfileID");
-				newProfile.OwnerSSN = pR.getString("OwnerSSN");
-				newProfile.DatingRangeStart = Integer.parseInt(pR.getString("DatingAgeRangeStart"));
-				newProfile.DatingRangeEnd = Integer.parseInt(pR.getString("DatingAgeRangeEnd"));
-				newProfile.DatinGeoRange = Integer.parseInt(pR.getString("DatinGeoRange"));
-				newProfile.Age = Integer.parseInt(pR.getString("Age"));
-				newProfile.Gender = pR.getString("M_F");
-				newProfile.Hobbies = pR.getString("Hobbies");
-				newProfile.Height = Integer.parseInt(pR.getString("Height"));
-				newProfile.Weight = Integer.parseInt(pR.getString("Weight"));
-				newProfile.HairColor = pR.getString("HairColor");
-				newProfile.CreationDate = pR.getDate("CreationDate");
-				newProfile.LastModDate = pR.getDate("LastModDate");
+				Profile matchProfile = new Profile();
+				matchProfile.ProfileID = pR.getString("ProfileID");
+				matchProfile.OwnerSSN = pR.getString("OwnerSSN");
+				matchProfile.DatingRangeStart = Integer.parseInt(pR.getString("DatingAgeRangeStart"));
+				matchProfile.DatingRangeEnd = Integer.parseInt(pR.getString("DatingAgeRangeEnd"));
+				matchProfile.DatinGeoRange = Integer.parseInt(pR.getString("DatinGeoRange"));
+				matchProfile.Age = Integer.parseInt(pR.getString("Age"));
+				matchProfile.Gender = pR.getString("M_F");
+				matchProfile.Hobbies = pR.getString("Hobbies");
+				matchProfile.Height = Integer.parseInt(pR.getString("Height"));
+				matchProfile.Weight = Integer.parseInt(pR.getString("Weight"));
+				matchProfile.HairColor = pR.getString("HairColor");
+				matchProfile.LastModDate = pR.getDate("LastModDate");
 			}
 			System.out.println(this.possibleMatches);
 		}
