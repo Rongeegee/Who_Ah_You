@@ -32,6 +32,7 @@ public class newAccount extends HttpServlet {
     }
     protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
     	String method = req.getMethod();
+		//System.out.println(req.getRequestURI()); // /whoahyou/newAccount
     	if(method.equals("POST"))
     		this.doPost(req,res);
     }

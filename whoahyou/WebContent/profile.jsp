@@ -44,12 +44,22 @@
      %>
     <!--  generating forloop to display the pictures -->
     <c:forEach var = "pro" items = "<%=profiles %>">
-    <a href="${pro.getPicPath()}" ><div class="proImgBlock"><img src= <c:out value = "${pro.getPicPath()}"/> class="defProImg"/><h2 class ="profileName"> <c:out value = "${pro.getProfileID()}" /></h2></div></a>
+    <div class="proImgBlock"><img src= <c:out value = "${pro.getPicPath()}"/> class="defProImg"/>
+    <form method = "get" action="likeServlet">
+    <input type="submit" name = "profileID" value="${pro.getProfileID()}">
+    </form>
+    </div>
+    <!--<h2 class ="profileName"> <c:out value = "${pro.getProfileID()}" /></h2></div></a>-->
 	</c:forEach>
 		<!--  this addButton has to be a button -->
+<<<<<<< HEAD
 		<a href="NewProfile.jsp"><div class="proImgBlock"><img src="images/addButton.jpg" class="defProImg"><h2 class ="profileName">new profile</h2></div></a>
+	<!-- <button value = ${valid}> </button>  -->
+=======
+		<a href="NewProfile.jsp"><div class="proImgBlock"><img src="images/addButton.jpg" class="defProImg"><h2 class ="profileName">new profile</h2></div></a>
+>>>>>>> branch 'master' of https://BrianLin219@bitbucket.org/ahhchoi/whoahyou.git
 	<button value = ${valid}> </button>
-  </div>
+</div>
 </div>
 
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>

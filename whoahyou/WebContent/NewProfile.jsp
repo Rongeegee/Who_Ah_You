@@ -42,12 +42,20 @@
 		<br><br><br>
 	</div>
       <div class="input-container">
+<<<<<<< HEAD
+        <input type="text" id="profileID" required >
+=======
         <input type="text" name= "profileID" id="profileID" required= "required">
+>>>>>>> branch 'master' of https://BrianLin219@bitbucket.org/ahhchoi/whoahyou.git
         <label for="label">Profile ID</label>
         <div class="bar"></div>
       </div>
 	  <div class="input-container">
+<<<<<<< HEAD
+        <input type="text" id="profileName" required >
+=======
         <input type="text" name = "profileName" id="profileName" >
+>>>>>>> branch 'master' of https://BrianLin219@bitbucket.org/ahhchoi/whoahyou.git
         <label for="label">Profile Name(optional)</label>
         <div class="bar"></div>
       </div>
@@ -55,22 +63,45 @@
       <div class="input-container">
 		<h6 style="font-size:20px;">age</h6>
 		<br>
+<<<<<<< HEAD
+		<select class="age" Id="profileAge"><option value="select">select</option></select>
+=======
 		<select class="age" name="profileAge" Id="profileAge"><option value="select">select</option></select>
+>>>>>>> branch 'master' of https://BrianLin219@bitbucket.org/ahhchoi/whoahyou.git
 		<br><br>
         <div class="bar"></div>
       </div>
 	 
 	  <div class="input-container">
+<<<<<<< HEAD
+			<input type="text" id="profileCity" required="required"/>
+			<label for="label">city</label>
+=======
 			<input type="text" name="hairColor" id="hairColor"/>
 			<label for="label">Hair Color</label>
+>>>>>>> branch 'master' of https://BrianLin219@bitbucket.org/ahhchoi/whoahyou.git
 			<div class="bar"></div>
         <div class="bar"></div>
       </div>
       
 	  <div class="input-container">
+<<<<<<< HEAD
+			<input type="text" id="profileState" required="required"/>
+			<label for="label">state</label>
+			<div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+	  <div class="input-container">
+		<h6 style="font-size:20px;">gender</h6>
+=======
 		<h6 style="font-size:20px;">Gender</h6>
+>>>>>>> branch 'master' of https://BrianLin219@bitbucket.org/ahhchoi/whoahyou.git
 		<br>
+<<<<<<< HEAD
+		  <select id="profileGender">
+=======
 		  <select name = "gender" id="profileGender">
+>>>>>>> branch 'master' of https://BrianLin219@bitbucket.org/ahhchoi/whoahyou.git
 				<option value= "select">select</option>
 				<option value="male">male</option>
 				<option value="female">female</option>
@@ -82,13 +113,21 @@
       </div>  
 	   <div class="input-container">
 			<h6 style="font-size:20px;">Weight</h6><br>
+<<<<<<< HEAD
+			<select class="weight" id="profileWeight"><option value="select">select</option></select>
+=======
 			<select name = "weight" class="weight" id="profileWeight"><option value="select">select</option></select>
+>>>>>>> branch 'master' of https://BrianLin219@bitbucket.org/ahhchoi/whoahyou.git
 		  <br><br>
         <div class="bar"></div>
       </div>
 	  <div class="input-container">		
 		 <h6 style="font-size:20px;">height </h6><br>
+<<<<<<< HEAD
+		  feet <select class="feet" id="profileFeet"><option value="select">select</option></select> inches <select ID="profileInches"><option value="select">select</option><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option></select>
+=======
 		  feet <select name="feet" class="feet" id="profileFeet"><option value="select">select</option></select> inches <select name ="inches" id="profileInches"><option value="select">select</option><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option></select>
+>>>>>>> branch 'master' of https://BrianLin219@bitbucket.org/ahhchoi/whoahyou.git
 		  <br><br>  
 			<div class="bar"></div>
         <div class="bar"></div>
@@ -96,7 +135,11 @@
       <div class="input-container">
 	   <h6 style="font-size:20px;">  Interested in people within</h6>
 			<br><br>
+<<<<<<< HEAD
+		  <select class="geoRange" Id="profileGeoDatingRange"><option value="select">select</option></select> mile(s)
+=======
 		  <select name = "geoRange" class="geoRange" Id="profileGeoDatingRange"><option value="select">select</option></select> mile(s)
+>>>>>>> branch 'master' of https://BrianLin219@bitbucket.org/ahhchoi/whoahyou.git
 		  <br><br>
 			<div class="bar"></div>
         <div class="bar"></div>
@@ -104,8 +147,13 @@
 	  <div class="input-container">
 			<br><br>
 		  <h1 style="font-size:20px;"> Preferred age<h1><br>
+<<<<<<< HEAD
+		  <select class="DatingAgeFrom" id="datingAgeFrom"><option value="select">select</option></select> to
+		  <select class="DatingAgeFrom" id="datingAgeTo"><option value="select">select</option></select>
+=======
 		  <h6><select class="DatingAgeFrom" id="datingAgeFrom"><option value="select">select</option></select> to
 		  <select class="DatingAgeFrom" id="datingAgeTo"><option value="select">select</option></select></h6>
+>>>>>>> branch 'master' of https://BrianLin219@bitbucket.org/ahhchoi/whoahyou.git
 		  <br><br>
 			<div class="bar"></div>
         <div class="bar"></div>
@@ -124,7 +172,11 @@
 	  </div>
 	</div>
 	   <button class="pink_button_block" style="margin-left:40%;margin-top:20%;" onclick="verifyInput()"><span>done</span></button>
+<<<<<<< HEAD
+
+=======
 	</form>
+>>>>>>> branch 'master' of https://BrianLin219@bitbucket.org/ahhchoi/whoahyou.git
 	</div>
 	</div>
 	</div>
