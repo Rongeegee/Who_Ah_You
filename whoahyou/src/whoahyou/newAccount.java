@@ -92,7 +92,6 @@ public class newAccount extends HttpServlet {
 				personSt.setString(10, phone);
 				personSt.execute();
 				//insert into account
-				System.out.println("it gets here");
 				sql = "insert into account (OwnerSSN,CardNumber,AcctNum,AcctCreationDate) values ((select SSN from person where SSN=?),?,?,?);";
 				PreparedStatement accountSt = DBcon.conn.prepareStatement(sql);
 				accountSt.setString(1, ssn);
@@ -100,7 +99,6 @@ public class newAccount extends HttpServlet {
 				accountSt.setString(3, firstName);
 				accountSt.setDate(4, date);
 				accountSt.execute();
-				System.out.print("everything works");
 				DBcon.conn.close();
 				res.sendRedirect("profile.jsp");
 				
