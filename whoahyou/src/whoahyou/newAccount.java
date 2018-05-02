@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Connection;
 
 
 import javax.servlet.ServletException;
@@ -31,6 +32,7 @@ public class newAccount extends HttpServlet {
     }
     protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
     	String method = req.getMethod();
+		//System.out.println(req.getRequestURI()); // /whoahyou/newAccount
     	if(method.equals("POST"))
     		this.doPost(req,res);
     }
@@ -43,11 +45,22 @@ public class newAccount extends HttpServlet {
 		}
 	}
     protected boolean makeAccount(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException, SQLException {
-				String email = req.getParameter("email");
+				DBConnectionManager DBcon = new DBConnectionManager();
+    			String email = req.getParameter("email");
+				String sql = "select Email from person where Email=?";
+				PreparedStatement pst = DBcon.conn.prepareStatement(sql);
+				pst.setString(1, email);
+				ResultSet rset = pst.executeQuery();
+				if(rset.next()) {
+					System.out.println("The acccount already exist with this email.");
+					res.sendRedirect("register.jsp");
+					return false;
+				}
 				String pwd = req.getParameter("pwd");
 				String confirmPwd = req.getParameter("confirmPwd");
 				if(!pwd.equals(confirmPwd)) {
 					System.out.println("Password and confirmed password does not match.");
+					res.sendRedirect("register.jsp");
 					return false;
 				}
 				String firstName = req.getParameter("firstName");
@@ -64,9 +77,8 @@ public class newAccount extends HttpServlet {
 				java.sql.Date date=new java.sql.Date(millis);  
 				System.out.println(date);
 				//open up db to add new user/account/person
-				DBConnectionManager DBcon = new DBConnectionManager();
 				//insert into person
-				String sql = "insert into person (SSN,Password,FirstName,LastName,Street,City,State,Zipcode,Email,Telephone) values ('?','?','?','?','?','?','?',?,'?','?');";
+				sql = "insert into person (SSN,Password,FirstName,LastName,Street,City,State,Zipcode,Email,Telephone) values (?,?,?,?,?,?,?,?,?,?);";
 				PreparedStatement personSt = DBcon.conn.prepareStatement(sql);  
 				personSt.setString(1, ssn);
 				personSt.setString(2, pwd);
@@ -78,18 +90,20 @@ public class newAccount extends HttpServlet {
 				personSt.setInt(8, zip);
 				personSt.setString(9, email);
 				personSt.setString(10, phone);
-				ResultSet rs = personSt.executeQuery(sql);
-				System.out.println(rs);
+				personSt.execute();
 				//insert into account
 				System.out.println("it gets here");
-				sql = "insert into account (OwnerSSN,CardNumber,AcctNum,AcctCreationDate) values ('?','?','?','?');";
+				sql = "insert into account (OwnerSSN,CardNumber,AcctNum,AcctCreationDate) values ((select SSN from person where SSN=?),?,?,?);";
 				PreparedStatement accountSt = DBcon.conn.prepareStatement(sql);
 				accountSt.setString(1, ssn);
 				accountSt.setString(2, cardNum);
 				accountSt.setString(3, firstName);
 				accountSt.setDate(4, date);
-				accountSt.executeUpdate(sql);
-			System.out.print("everything works");
+				accountSt.execute();
+				System.out.print("everything works");
+				DBcon.conn.close();
+				res.sendRedirect("profile.jsp");
+				
 		return true;
 	}
 //	/**
