@@ -51,10 +51,8 @@
     </div>
     <!--<h2 class ="profileName"> <c:out value = "${pro.getProfileID()}" /></h2></div></a>-->
 	</c:forEach>
-		<!--  this addButton has to be a button -->
 		<a href="NewProfile.jsp"><div class="proImgBlock"><img src="images/addButton.jpg" class="defProImg"><h2 class ="profileName">new profile</h2></div></a>
-	<!-- <button value = ${valid}> </button>  -->
-		
+
 </div>
 </div>
 
