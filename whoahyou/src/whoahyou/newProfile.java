@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/newProfile")
 public class newProfile extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+	//private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -63,25 +63,10 @@ public class newProfile extends HttpServlet {
 		//insert into person
 		sql = "insert into person (SSN,Password,FirstName,LastName,Street,City,State,Zipcode,Email,Telephone) values (?,?,?,?,?,?,?,?,?,?);";
 		PreparedStatement personSt = DBcon.conn.prepareStatement(sql);  
-		personSt.setString(1, profileID);
-		personSt.setString(2, profileName);
-		personSt.setString(3, firstName);
-		personSt.setString(4, lastName);
-		personSt.setString(5, street);
-		personSt.setString(6, city);
-		personSt.setString(7, state);
-		personSt.setInt(8, zip);
-		personSt.setString(9, email);
-		personSt.setString(10, phone);
+
 		personSt.execute();
 		//insert into account
-		sql = "insert into account (OwnerSSN,CardNumber,AcctNum,AcctCreationDate) values ((select SSN from person where SSN=?),?,?,?);";
-		PreparedStatement accountSt = DBcon.conn.prepareStatement(sql);
-		accountSt.setString(1, ssn);
-		accountSt.setString(2, cardNum);
-		accountSt.setString(3, firstName);
-		accountSt.setDate(4, date);
-		accountSt.execute();
+
 		DBcon.conn.close();
 		res.sendRedirect("profile.jsp");
 		
