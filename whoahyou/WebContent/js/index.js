@@ -1,3 +1,11 @@
+$('.toggle').on('click', function() {
+  $('.container').stop().addClass('active');
+});
+
+$('.close').on('click', function() {
+  $('.container').stop().removeClass('active');
+});
+
 function loginErrorMessage(){
 	document.getElementById("errorLoginMes").style.display = "block";
 }
