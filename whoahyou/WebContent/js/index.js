@@ -1,6 +1,3 @@
-
-
-
 function loginErrorMessage(){
 	document.getElementById("errorLoginMes").style.display = "block";
 }
