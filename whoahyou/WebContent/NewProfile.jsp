@@ -32,18 +32,16 @@
 <div class="big_container">
 	<div class="card"></div>
   <div class="card">
-  	<form method = post action = userAccountAction>
+  	<form method = post action = newProfile enctype='multipart/form-data'>
     <h1 class="title">New Profile</h1>
 	<div style="width:30%;margin-left:5%;">
-	<h4 style="font-size:20px">upload a profile image(optional)</h4><br>
+		<h4 style="font-size:20px">upload a profile image(optional)</h4><br>
 		<img src="images/defaultProfile.jpg" style="height:150px;width:120px;" id = "profilePic"/>
-		<br><br>
-		<input type="file" name="pic" accept="image/*" id="imgPath" onchange="uploadImg()">
+		<br><br>	
+		<input name = "profilePic" type="file" accept="image/*" id="imgPath" onchange="uploadImg()">
 		<br><br><br>
 	</div>
       <div class="input-container">
-
-        <input type="text" id="profileID" required >
 
         <input type="text" name= "profileID" id="profileID" required= "required">
 
@@ -51,45 +49,21 @@
         <div class="bar"></div>
       </div>
 	  <div class="input-container">
-        <input type="text" id="profileName" required >
-
         <input type="text" name = "profileName" id="profileName" >
-
         <label for="label">Profile Name(optional)</label>
         <div class="bar"></div>
       </div>
-	  
       <div class="input-container">
 		<h6 style="font-size:20px;">age</h6>
 		<br>
-
-		<select class="age" Id="profileAge"><option value="select">select</option></select>
-<select class="age" name="profileAge" Id="profileAge"><option value="select">select</option></select>
+		<select class="age" name = "profileAge" Id="profileAge"><option value="select">select</option></select>
 		<br><br>
         <div class="bar"></div>
       </div>
 	 
 	  <div class="input-container">
-			<input type="text" id="profileCity" required="required"/>
-			<label for="label">city</label>
-			<input type="text" name="hairColor" id="hairColor"/>
-			<label for="label">Hair Color</label>
-			<div class="bar"></div>
-        <div class="bar"></div>
-      </div>
-      
-	  <div class="input-container">
-			<input type="text" id="profileState" required="required"/>
-			<label for="label">state</label>
-			<div class="bar"></div>
-        <div class="bar"></div>
-      </div>
-	  <div class="input-container">
-		<h6 style="font-size:20px;">gender</h6>
 		<h6 style="font-size:20px;">Gender</h6>
 		<br>
-		  <select id="profileGender">
-
 		  <select name = "gender" id="profileGender">
 				<option value= "select">select</option>
 				<option value="male">male</option>
@@ -102,17 +76,17 @@
       </div>  
 	   <div class="input-container">
 			<h6 style="font-size:20px;">Weight</h6><br>
-
-			<select class="weight" id="profileWeight"><option value="select">select</option></select>
-
 			<select name = "weight" class="weight" id="profileWeight"><option value="select">select</option></select>
 		  <br><br>
         <div class="bar"></div>
       </div>
 	  <div class="input-container">		
 		 <h6 style="font-size:20px;">height </h6><br>
-		  feet <select class="feet" id="profileFeet"><option value="select">select</option></select> inches <select ID="profileInches"><option value="select">select</option><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option></select>
-		  feet <select name="feet" class="feet" id="profileFeet"><option value="select">select</option></select> inches <select name ="inches" id="profileInches"><option value="select">select</option><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option></select>
+		  feet <select name="feet" class="feet" id="profileFeet"><option value="select">select</option>
+		  </select> inches <select name ="inches" id="profileInches"><option value="select">select</option>
+		  <option>0</option><option>1</option><option>2</option><option>3</option><option>4</option>5</option>
+		  <option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option>
+		  </select>
 		  <br><br>  
 			<div class="bar"></div>
         <div class="bar"></div>
@@ -129,10 +103,8 @@
 	  <div class="input-container">
 			<br><br>
 		  <h1 style="font-size:20px;"> Preferred age<h1><br>
-		  <select class="DatingAgeFrom" id="datingAgeFrom"><option value="select">select</option></select> to
-		  <select class="DatingAgeFrom" id="datingAgeTo"><option value="select">select</option></select>
-		  <h6><select class="DatingAgeFrom" id="datingAgeFrom"><option value="select">select</option></select> to
-		  <select class="DatingAgeFrom" id="datingAgeTo"><option value="select">select</option></select></h6>
+		  <select class="DatingAgeFrom" name = "DatingAgeRangeStart" id="datingAgeFrom"><option value="select">select</option></select> to
+		  <select class="DatingAgeFrom"  name="DatingAgeRangeEnd" id="datingAgeTo"><option value="select">select</option></select></h6>
 		  <br><br>
 			<div class="bar"></div>
         <div class="bar"></div>
@@ -146,7 +118,7 @@
 		<div>
 		<h5 style="font-size:17px; margin-top:-3%">Hobbies:</h5>
 		
-		<ul id="hobby_list" style="font-size:17px;margin-left:55px;margin-top:2%;">
+		<ul id="hobby_list" name="hobbies" style="font-size:17px;margin-left:55px;margin-top:2%;">
 		</ul>
 	  </div>
 	</div>

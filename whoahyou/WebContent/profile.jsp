@@ -42,15 +42,17 @@
     <% 
     	List<Profile> profiles = (ArrayList<Profile>) request.getAttribute("profiles");
      %>
-    <!--  generating forloop to display the pictures -->
+    <!--  generating forloop to display the pictures and names-->
+    
     <c:forEach var = "pro" items = "<%=profiles %>">
-    <div class="proImgBlock"><img src= <c:out value = "${pro.getPicPath()}"/> class="defProImg"/>
-    <form method = "get" action="likeServlet">
-    <input type="submit" name = "profileID" value="${pro.getProfileID()}">
-    </form>
-    </div>
+	    <div class="proImgBlock"><img src= <c:out value = "${pro.getPicPath()}"/> class="defProImg"/>
+	    <form method = "get" action="likeServlet">
+	    <input type="submit" name = "profileID" value="${pro.getProfileID()}">
+	    </form>
+	    </div>
     <!--<h2 class ="profileName"> <c:out value = "${pro.getProfileID()}" /></h2></div></a>-->
 	</c:forEach>
+	
 	<a href="NewProfile.jsp"><div class="proImgBlock"><img src="images/addButton.jpg" class="defProImg"><h2 class ="profileName">new profile</h2></div></a>
 
 </div>
