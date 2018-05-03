@@ -27,6 +27,8 @@ public class Profile {
 	Date LastModDate;
 	String picPath;
 	ArrayList<Profile> possibleMatches = new ArrayList<Profile>();
+	ArrayList<like> likers = new ArrayList<like>(); // key = email
+	
 	public Profile() {
 		
 	}
@@ -36,6 +38,13 @@ public class Profile {
 	public String getProfileID() {
 		return this.ProfileID;
 	}
+	public int getAge() {
+		return Age;
+	}
+	public String getGender() {
+		return Gender;
+	}
+	
 	protected void getMatches() throws ServletException, IOException, SQLException{
 			DBConnectionManager DBcon = new DBConnectionManager();
 			String sql = "select * from profile where Age >= ? or Age <= ?";
@@ -70,4 +79,3 @@ public class Profile {
 			
 	}
 }
-
