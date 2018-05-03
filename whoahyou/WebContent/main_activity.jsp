@@ -228,27 +228,60 @@
 			
 			<!-- the following div with an "like" id is the like page-->
 			<div id="like" class="pane" style="display:none">
-			<h1 ID="likeHeading">Like:</h2>
+			<h1 ID="likeHeading">People That You Like:</h2>
 			  <div class="InfoBlock"><img src="images/defaultProfile.jpg" class="likerImg">
 					<h2>user</h2>
 					<h2>date</h2>
 					<h2>time</h2>
-			  </div>
-			  <div class="InfoBlock"><img src="images/defaultProfile.jpg" class="likerImg">
+					<button class="likeBackButton">like back</button>
+				</div>
+			    <div class="InfoBlock"><img src="images/defaultProfile.jpg" class="likerImg">
 					<h2>user</h2>
 					<h2>date</h2>
 					<h2>time</h2>
+					
+					<button class="likeBackButton">like back</button>
 				</div>
 				<div class="InfoBlock"><img src="images/defaultProfile.jpg" class="likerImg">
 					<h2>user</h2>
 					<h2>date</h2>
 					<h2>time</h2>
+					<button class="likeBackButton">like back</button>
 				</div>
 				<div class="InfoBlock"><img src="images/defaultProfile.jpg" class="likerImg">
 					<h2>user</h2>
 					<h2>date</h2>
 					<h2>time</h2>
+					<button class="likeBackButton">like back</button>
 				</div>
+				
+				<h1 ID="likeHeading" style="margin-top:20%;">People That Like You:</h2>
+				<div class="InfoBlock"><img src="images/defaultProfile.jpg" class="likerImg">
+					<h2>user</h2>
+					<h2>date</h2>
+					<h2>time</h2>
+					<button class="undoLikeButton">undo like</button>
+				</div>
+			    <div class="InfoBlock"><img src="images/defaultProfile.jpg" class="likerImg">
+					<h2>user</h2>
+					<h2>date</h2>
+					<h2>time</h2>
+					
+					<button class="undoLikeButton">undo like</button>
+				</div>
+				<div class="InfoBlock"><img src="images/defaultProfile.jpg" class="likerImg">
+					<h2>user</h2>
+					<h2>date</h2>
+					<h2>time</h2>
+					<button class="undoLikeButton">undo like</button>
+				</div>
+				<div class="InfoBlock"><img src="images/defaultProfile.jpg" class="likerImg">
+					<h2>user</h2>
+					<h2>date</h2>
+					<h2>time</h2>
+					<button class="undoLikeButton">undo like</button>
+				</div>
+				
 			</div>
 
 			<div id="discover" class="pane" style="display:none">

@@ -84,7 +84,7 @@ public class LogInServlet extends HttpServlet {
 				newProfile.Age = Integer.parseInt(pR.getString("Age"));
 				newProfile.Gender = pR.getString("M_F");
 				newProfile.Hobbies = pR.getString("Hobbies");
-				newProfile.Height = Integer.parseInt(pR.getString("Height"));
+				newProfile.Height = pR.getFloat("Height");
 				newProfile.Weight = Integer.parseInt(pR.getString("Weight"));
 				newProfile.HairColor = pR.getString("HairColor");
 				newProfile.CreationDate = pR.getDate("CreationDate");

@@ -20,7 +20,7 @@ public class Profile {
 	int Age;
 	String Gender;
 	String Hobbies;
-	int Height;
+	float Height;
 	int Weight;
 	String HairColor;
 	Date CreationDate;

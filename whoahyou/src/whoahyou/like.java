@@ -110,7 +110,7 @@ public class like extends HttpServlet{
 			currentProfile.Age = Integer.parseInt(profileResult.getString("Age"));
 			currentProfile.Gender = profileResult.getString("M_F");
 			currentProfile.Hobbies = profileResult.getString("Hobbies");
-			currentProfile.Height = Integer.parseInt(profileResult.getString("Height"));
+			currentProfile.Height = profileResult.getFloat("Height");
 			currentProfile.Weight = Integer.parseInt(profileResult.getString("Weight"));
 			currentProfile.HairColor = profileResult.getString("HairColor");
 			currentProfile.LastModDate = profileResult.getDate("LastModDate");
@@ -132,7 +132,7 @@ public class like extends HttpServlet{
 			match.Age = Integer.parseInt(profileResult.getString("Age"));
 			match.Gender = profileResult.getString("M_F");
 			match.Hobbies = profileResult.getString("Hobbies");
-			match.Height = Integer.parseInt(profileResult.getString("Height"));
+			match.Height = profileResult.getFloat("Height");
 			match.Weight = Integer.parseInt(profileResult.getString("Weight"));
 			match.HairColor = profileResult.getString("HairColor");
 			match.LastModDate = profileResult.getDate("LastModDate");
