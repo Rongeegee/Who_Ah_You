@@ -23,6 +23,7 @@
     		<%@ page import = "whoahyou.Profile" %>
     		<%@ page import = "whoahyou.undoLike" %>
     		<%@ page import = "whoahyou.createDate" %>
+    		<%@ page import = "whoahyou.viewProfile" %>
     		<%@ page import = "javax.servlet.http.HttpServletRequest" %>
     		<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %> 
     		<% 
@@ -31,10 +32,6 @@
     		List<Profile>matches = (ArrayList<Profile>) request.getAttribute("matchesList");
     		List<like> likeList = (ArrayList<like>) request.getAttribute("likerList");
     		List<like> likerList = (ArrayList<like>) request.getAttribute("likeeList");
-    		
-    		List<Profile> referList = (ArrayList<Profile>)request.getAttribute("referList");
-    		List<Profile> referList2 = (ArrayList<Profile>)request.getAttribute("referList2");
-    		
 			%>
      		
 <!-- Pen Title-->
@@ -57,7 +54,6 @@
 			  <button class="tabButton" onclick="tab('date')" id="dateButton">Dates</button>
 			  <button class="tabButton" onclick="tab('like')" id="likeButton">Likes</button>
 			  <button class="tabButton" onclick="tab('discover')" id="discoverButton">Discover</button>
-			  <button class="tabButton" onclick="tab('refer')" id="referButton">Referral</button>
 			</div>
 
 			<div id="date" class="pane">
@@ -66,6 +62,7 @@
 			  <c:forEach var = "pro" items = "<%=dates %>">
 				<div class="infoContainer">
 			  		<div class="dateImageSection">
+			  		
 						<img src="${pro.getURL()}" class="dateImg">
 					 	<h2 class="dateProfileName"><c:out value = "${pro.getP1()}" /></h2>
 					 	<h2 class="dateProfileName"><c:out value = "${pro.getP2()}" /></h2>
@@ -88,6 +85,7 @@
 			<h2 id="pendingDateHeading">pending Date:<h2>
 			<div class="infoContainer">
 			  <div class="dateImageSection">
+			  
 				<img src="images/defaultProfile.jpg" class="dateImg">
 				<h2  class="dateProfileName">Profile name</h2>
 			  </div>
@@ -139,17 +137,7 @@
 			
 			
 			
-			
-			<!-- the following code is for the display of future date-->
-			<h2 id="futureDateHeading">Future Date:<h2>
-			
-			<div class="futureDateInfoBlock">
-				<img src="images/defaultProfile.jpg" class="futureDateProImg" />
-				<h2 class="futureDateInfo">Profile Name</h2>
-				<h2 class="futureDateInfo">date_time</h2>
-				<h2 class="futureDateInfo">location</h2>
-				<button class="cancelDateButt" onclick="handleCancelDate(this)">cancel date</button>
-			</div>
+
 			
 			
 			
@@ -167,7 +155,10 @@
 			<h1 ID="likeHeading">People That Liked You:</h2>
 			  
 			  <c:forEach var = "pro" items = "<%=likeList %>">
-			  		<div class="InfoBlock"><img src="${pro.getURL()}" class="likerImg">
+			  		<div class="InfoBlock">
+			  		<form method = "get" action = "viewProfile">
+			  		<img src="${pro.getURL()}" class="likerImg">
+			  		</form>
 			  			<form method = "post" action = "createDate">
 			  			<input type="hidden" name="profileID" value="${pro.getLikee()}">
 			  			<input type="hidden" name="LikeeID" value="${pro.getLiker()}">
@@ -180,7 +171,10 @@
 			  </c:forEach>
 			  <h1 ID="likeHeading">People That You Liked:</h2>
 			  <c:forEach var = "pro" items = "<%=likerList %>">
-			  		<div class="InfoBlock"><img src="${pro.getURL()}" class="likerImg">
+			  		<div class="InfoBlock">
+			  		<form method = "get" action = "viewProfile">
+			  		<img src="${pro.getURL()}" class="likerImg">
+			  		</form>
 			  			<form method = "post" action = "undoLike">
 			  			<input type="hidden" name="profileID" value="${pro.getLiker()}">
 			  			<input type="hidden" name="LikeeID" value="${pro.getLikee()}">
@@ -195,35 +189,22 @@
 			
 			<div id="discover" class="pane" style="display:none">
 			<c:forEach var = "pro" items = "<%=matches %>">
-			  		<div class="InfoBlock"><img src="${pro.getPicPath()}" class="likerImg">
+			  		<div class="InfoBlock">
+			  		<form method = "get" action = "viewProfile">
+			  		<input type="hidden" name="imageProfile" value="${pro.getProfileID()}">
+			  		<input type="image" src="${pro.getPicPath()}" border="0" alt="Submit" class = "likerImg"/>
+			  		</form>
 			  		<form method = "post" action = "likeServlet">
 			  		<input type="hidden" name="chosenOne" value="${pro.getProfileID()}">
 			  		<input type="hidden" name="liker" value="<%=currentProfile%>">
 					<h2><c:out value = "${pro.getProfileID()}"/></h2>
 					<h2>Age: ${pro.getAge()}</h2>
 					<h2>Gender: ${pro.getGender()}</h2>
-					<button>Like</button>
+					<button>Like</button> 
 					</form>
 			  </div>
 			  </c:forEach>
 			</div>
-			
-			<div id="refer" class="pane" style="display:none">
-				<form method = "post" action = "referServlet">
-				<c:forEach var = "pro" items = "<%=matches %>">
-				  		<div class="InfoBlock"><img src="${pro.getPicPath()}" class="likerImg">
-				  		<input type="radio" name="profileC" value="${pro.getProfileID()}"/>
-				  		<input type="radio" name="profileB" value="${pro.getProfileID()}"/>
-				  		<input type="hidden" name="profileA" value="<%=currentProfile%>"/>
-						<h2><c:out value = "${pro.getProfileID()}"/></h2>
-						<h2>Age: ${pro.getAge()}</h2>
-						<h2>Gender: ${pro.getGender()}</h2>
-				  </div>
-				  </c:forEach>
-				  <button>Refer</button>
-				  </form>
-			</div>
-			
 
 		</div>
 	</div>	

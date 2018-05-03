@@ -36,33 +36,27 @@
   <div class="card">
     <h1 class="title">Profile(s)</h1>
     <%@ page import ="java.util.*"%>
-    <%@ page import = "whoahyou.User" %>
     <%@ page import = "whoahyou.Profile" %>
     <%@ page import = "javax.servlet.http.HttpServletRequest" %>
     <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %> 
     <% 
-    	User user = (User) request.getAttribute("user");
-    	List<Profile> profiles = user.profiles;
+    	List<Profile> profiles = (ArrayList<Profile>) request.getAttribute("profiles");
      %>
-    <!--  generating forloop to display the pictures and names-->
-    
+    <!--  generating forloop to display the pictures -->
     <c:forEach var = "pro" items = "<%=profiles %>">
-	    <div class="proImgBlock"><img src= <c:out value = "${pro.getPicPath()}"/> class="defProImg"/>
-	    <form method = "get" action="likeServlet">
-	    <input type="submit" name = "profileID" value="${pro.getProfileID()}">
-	    </form>
-	    </div>
+    <div class="proImgBlock"><img src= <c:out value = "${pro.getPicPath()}"/> class="defProImg"/>
+    <form method = "get" action="likeServlet">
+    <input type="submit" name = "profileID" value="${pro.getProfileID()}">
+    </form>
+    </div>
     <!--<h2 class ="profileName"> <c:out value = "${pro.getProfileID()}" /></h2></div></a>-->
 	</c:forEach>
-	<%
-		request.setAttribute("ssn", user.getSSN());
-	%>
-	<a href="NewProfile.jsp"><div class="proImgBlock"><img src="images/addButton.jpg" class="defProImg"><h2 class ="profileName">new profile</h2></div></a>
+		<a href="NewProfile.jsp"><div class="proImgBlock"><img src="images/addButton.jpg" class="defProImg"><h2 class ="profileName">new profile</h2></div></a>
 
 </div>
 </div>
 
-  <script src='http://cdnjs.cloudflare.co	m/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
   
 
