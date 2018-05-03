@@ -878,6 +878,32 @@ body {
   text-decoration: none;
 }
    
+/** button for the discover page**/
+.likeProfileButton {
+  background: #C9D119;
+  background-image: -webkit-linear-gradient(top, #C9D119, #C9D119);
+  background-image: -moz-linear-gradient(top, #C9D119, #C9D119);
+  background-image: -ms-linear-gradient(top, #C9D119, #C9D119);
+  background-image: -o-linear-gradient(top, #C9D119, #C9D119);
+  background-image: linear-gradient(to bottom, #1975D1, #1975D1);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  text-decoration: none;
+  height:80%
+}
+
+.likeProfileButton:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
 
 /** for the like page**/
 
@@ -978,5 +1004,4 @@ body {
 	margin:10px;
 	
 }
-
 

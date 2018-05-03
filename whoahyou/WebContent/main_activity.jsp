@@ -289,44 +289,24 @@
 					<h2>user</h2>
 					<h2>18-Year-Old</h2>
 					<h2>20 miles</h2>
-					<h2>6 feets 11 inches<h2> 
+					<h2>6 feets 11 inches<h2>
+					<button class="likeProfileButton">like</button>					
 			  </div>
 			  <div class="InfoBlock"><img src="images/defaultProfile.jpg" class="likerImg">
 					<h2>user</h2>
 					<h2>18-Year-Old</h2>
 					<h2>20 miles</h2>
 					<h2>6 feets 11 inches<h2> 
+					<button class="likeProfileButton">like</button>	
 			  </div>
 			  <div class="InfoBlock"><img src="images/defaultProfile.jpg" class="likerImg">
 					<h2>user</h2>
 					<h2>18-Year-Old</h2>
 					<h2>20 miles</h2>
 					<h2>6 feets 11 inches<h2> 
+					<button class="likeProfileButton">like</button>	
 			  </div>
-			  <div class="InfoBlock"><img src="images/defaultProfile.jpg" class="likerImg">
-					<h2>user</h2>
-					<h2>18-Year-Old</h2>
-					<h2>20 miles</h2>
-					<h2>6 feets 11 inches<h2> 
-			  </div>
-			  <div class="InfoBlock"><img src="images/defaultProfile.jpg" class="likerImg">
-					<h2>user</h2>
-					<h2>18-Year-Old</h2>
-					<h2>20 miles</h2>
-					<h2>6 feets 11 inches<h2> 
-			  </div>
-			  <div class="InfoBlock"><img src="images/defaultProfile.jpg" class="likerImg">
-					<h2>user</h2>
-					<h2>18-Year-Old</h2>
-					<h2>20 miles</h2>
-					<h2>6 feets 11 inches<h2> 
-			  </div>
-			  <div class="InfoBlock"><img src="images/defaultProfile.jpg" class="likerImg">
-					<h2>user</h2>
-					<h2>18-Year-Old</h2>
-					<h2>20 miles</h2>
-					<h2>6 feets 11 inches<h2> 
-			  </div>
+			  
 			  
 			</div>
 
