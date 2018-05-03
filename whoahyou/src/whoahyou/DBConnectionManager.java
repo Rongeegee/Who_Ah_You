@@ -8,11 +8,11 @@ import java.sql.Connection;
 public class DBConnectionManager {
 	public Connection conn;
 	public DBConnectionManager() {
-		String user = "root";
-		String pwd = "whoahyou";
+		String user = "rolli";
+		String pwd = "110267045";
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/who_ah_you",user,pwd);
+			conn = DriverManager.getConnection("jdbc:mysql://mysql4.cs.stonybrook.edu:3306/rolli",user,pwd);
 			if (conn != null) {
                 System.out.println("Connected to the database");
             }

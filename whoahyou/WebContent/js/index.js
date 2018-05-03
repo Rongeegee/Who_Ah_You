@@ -1,3 +1,6 @@
+
+
+
 function loginErrorMessage(){
 	document.getElementById("errorLoginMes").style.display = "block";
 }
@@ -169,6 +172,9 @@ function uploadImg(){
 		//i might need to extract the file path from the code above if needed
 }
 
+
+
+
 //the following function is to build the tab pane
 
 function tab(tab) {
@@ -179,3 +185,25 @@ function tab(tab) {
     }
     document.getElementById(tab).style.display = "block";  
 }
+
+
+//the following code is for the date page
+function handleCancelDate(thisButton){
+	if(thisButton.innerHTML == "cancel date"){
+		thisButton.innerHTML = "confirm";
+		var div = thisButton.parentNode;
+		var cancelButt = document.createElement("button");
+		var cancelButtText = document.createTextNode("cancel");
+		cancelButt.appendChild(cancelButtText);
+		cancelButt.className = "CancelConfirmbutton";
+		cancelButt.onclick =function (){
+				div.removeChild(cancelButt);
+				thisButton.innerHTML = "cancel date";
+			}
+		
+		div.appendChild(cancelButt);
+		
+
+	}
+}
+
