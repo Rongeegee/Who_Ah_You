@@ -1,30 +1,21 @@
 package whoahyou;
 
-import java.io.File;
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Date;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.tomcat.util.http.fileupload.FileItem;
-import org.apache.tomcat.util.http.fileupload.FileUploadException;
-import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
-import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
-import org.apache.tomcat.util.http.fileupload.servlet.ServletRequestContext;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+import javax.servlet.http.HttpServletResponse;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
 /**
  * Servlet implementation class newProfile
  */
 @WebServlet("/newProfile")
-public class newProfile extends HttpServlet implements MainInfo{
-	DBConnectionManager DBcon = MainInfo.DBcon;
-	public User user = MainInfo.user;
+public class newProfile extends HttpServlet{
+	DBConnectionManager DBcon = Data.DBcon;
+	public User user = Data.user;
 	//private static final long serialVersionUID = 1L;
     /**
      * @see HttpServlet#HttpServlet()
@@ -47,10 +38,8 @@ public class newProfile extends HttpServlet implements MainInfo{
 		}
 	}
     protected boolean makeProfile(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		Profile newProfile = new Profile();
 		String profileID = "";
 		profileID =req.getParameter("profileID");
-		System.out.println(profileID);
 		//checking whether profileID exist in the db
 		String sql = "select ProfileID from profile where ProfileID=?";
 		PreparedStatement pst = DBcon.conn.prepareStatement(sql);
@@ -62,7 +51,6 @@ public class newProfile extends HttpServlet implements MainInfo{
 			return false;
 		}
 		//try to save the profile image into the system.
-		
 		String profileName = req.getParameter("profileName");
 		int age = Integer.parseInt(req.getParameter("profileAge"));
 		String gender = req.getParameter("gender");
@@ -81,9 +69,11 @@ public class newProfile extends HttpServlet implements MainInfo{
 		sql = "INSERT INTO Profile(ProfileID, OwnerSSN, Age, DatingAgeRangeStart,DatingAgeRangeEnd,"
 				+ "DatinGeoRange, M_F, Hobbies, Height, Weight, HairColor,CreationDate, LastModDate) "
 				+ "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);";
+
 		PreparedStatement ppst = DBcon.conn.prepareStatement(sql);
 		ppst.setString(1, profileID);
 		ppst.setString(2, user.ssn);
+		System.out.println(user.ssn);
 		ppst.setInt(3, age);
 		ppst.setInt(4, DatingAgeRangeStart);
 		ppst.setInt(5, DatingAgeRangeEnd);
@@ -95,34 +85,30 @@ public class newProfile extends HttpServlet implements MainInfo{
 		ppst.setString(11, hairColor);
 		ppst.setDate(12, CreatedDate);
 		ppst.setDate(13, CreatedDate);
-		ppst.executeQuery();
+		System.out.println(ppst.execute());
 		
-		MainInfo.currentProfile.ProfileID = profileID;
-		MainInfo.currentProfile.ProfileName = profileName;
-		MainInfo.currentProfile.Age = age;
-		MainInfo.currentProfile.Gender = gender;
-		MainInfo.currentProfile.HairColor = hairColor;
-		MainInfo.currentProfile.Height = height;
-		MainInfo.currentProfile.Weight = weight;
-		MainInfo.currentProfile.Hobbies = Hobbies;
-		MainInfo.currentProfile.CreationDate = (java.sql.Date) CreatedDate;
-		MainInfo.currentProfile.LastModDate = (java.sql.Date) CreatedDate;
-		MainInfo.currentProfile.DatinGeoRange = geoRange;
-		MainInfo.currentProfile.DatingRangeStart = DatingAgeRangeStart;
-		MainInfo.currentProfile.DatingRangeEnd = DatingAgeRangeEnd;
-		user.profiles.add(MainInfo.currentProfile);
-		
+		Data.currentProfile.ProfileID = profileID;
+		Data.currentProfile.ProfileName = profileName;
+		Data.currentProfile.Age = age;
+		Data.currentProfile.Gender = gender;
+		Data.currentProfile.HairColor = hairColor;
+		Data.currentProfile.Height = height;
+		Data.currentProfile.Weight = weight;
+		Data.currentProfile.Hobbies = Hobbies;
+		Data.currentProfile.CreationDate = (java.sql.Date) CreatedDate;
+		Data.currentProfile.LastModDate = (java.sql.Date) CreatedDate;
+		Data.currentProfile.DatinGeoRange = geoRange;
+		Data.currentProfile.DatingRangeStart = DatingAgeRangeStart;
+		Data.currentProfile.DatingRangeEnd = DatingAgeRangeEnd;
+		user.profiles.add(Data.currentProfile);
 		
 		// adding it into profile
 		System.out.println("profile inserted");
-		
-		
 		
 		// pickcing ima from the index 0 and generate the rest 
 		
 		req.setAttribute("user", user);
 		req.getRequestDispatcher("profile.jsp").forward(req, res);
-		res.sendRedirect("profile.jsp");
 	return true;
 	}
 }

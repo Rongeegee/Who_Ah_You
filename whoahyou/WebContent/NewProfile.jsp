@@ -38,15 +38,7 @@
   <div class="card">
   	
     <h1 class="title">New Profile</h1>
-	<div style="width:30%;margin-left:5%;">
-	
-		<h4 style="font-size:20px">upload a profile image(optional)</h4><br>
-		<form method = post action = newProfilePic enctype="multipart/form-data">
-		<img src="images/defaultProfile.jpg" style="height:150px;width:120px;" id = "profilePic"/></form>
-		<br><br>	
-		<input name = "profilePic" type="file" accept="image/*" id="imgPath" onchange="uploadImg()">
-		<br><br><br>
-	</div>
+<!--  <jsp:include page="newProfilePic.jsp" />-->	
 	
 	<form method = post action = newProfile>
       <div class="input-container">
@@ -77,7 +69,7 @@
 	  <div class="input-container">
 		<h6 style="font-size:20px;">Gender</h6>
 		<br>
-		  <select name = "gender" id="profileGender">
+		  <select name = "gender" id="profileGender" required = "required">
 				<option value= "select">select</option>
 				<option value="male">male</option>
 				<option value="female">female</option>
@@ -94,7 +86,7 @@
         <div class="bar"></div>
       </div>
 	  <div class="input-container">		
-		 <h6 style="font-size:20px;">height </h6><br>
+		 <h6 style="font-size:20px;">Height </h6><br>
 		  feet <select name="feet" class="feet" id="profileFeet"><option value="select">select</option>
 		  </select> inches <select name ="inches" id="profileInches"><option value="select">select</option>
 		  <option>0</option><option>1</option><option>2</option><option>3</option><option>4</option>5</option>
@@ -105,7 +97,7 @@
         <div class="bar"></div>
       </div>
       <div class="input-container">
-	   <h6 style="font-size:20px;">  Interested in people within</h6>
+	   <h6 style="font-size:20px;">Interested in people within</h6>
 			<br><br>
 		  <select class="geoRange" Id="profileGeoDatingRange"><option value="select">select</option></select> mile(s)
 		  <select name = "geoRange" class="geoRange" Id="profileGeoDatingRange"><option value="select">select</option></select> mile(s)
@@ -141,12 +133,6 @@
 	</div>
 	</div>
 	  
-	  
-  
-  
-		
-
-
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
   

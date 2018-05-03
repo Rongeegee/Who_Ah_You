@@ -99,7 +99,6 @@ public class newAccount extends HttpServlet {
 				accountSt.setString(3, firstName);
 				accountSt.setDate(4, date);
 				accountSt.execute();
-				DBcon.conn.close();
 				res.sendRedirect("profile.jsp");
 				
 		return true;
