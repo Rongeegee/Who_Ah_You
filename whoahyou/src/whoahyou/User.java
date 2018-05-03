@@ -30,6 +30,9 @@ public class User {
 		this.LastName = LastName;
 	}
 	
+	public String getSSN() {
+		return ssn;
+	}
 }
 
 

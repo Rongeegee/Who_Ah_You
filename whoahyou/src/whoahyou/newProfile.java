@@ -39,6 +39,7 @@ public class newProfile extends HttpServlet{
 	}
     protected boolean makeProfile(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		String profileID = "";
+		Profile newProfile = new Profile();
 		profileID =req.getParameter("profileID");
 		//checking whether profileID exist in the db
 		String sql = "select ProfileID from profile where ProfileID=?";
@@ -69,10 +70,10 @@ public class newProfile extends HttpServlet{
 		sql = "INSERT INTO Profile(ProfileID, OwnerSSN, Age, DatingAgeRangeStart,DatingAgeRangeEnd,"
 				+ "DatinGeoRange, M_F, Hobbies, Height, Weight, HairColor,CreationDate, LastModDate) "
 				+ "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);";
-
+		String userSSN = req.getParameter("ssn");
 		PreparedStatement ppst = DBcon.conn.prepareStatement(sql);
 		ppst.setString(1, profileID);
-		ppst.setString(2, user.ssn);
+		ppst.setString(2, userSSN);
 		System.out.println(user.ssn);
 		ppst.setInt(3, age);
 		ppst.setInt(4, DatingAgeRangeStart);
@@ -87,20 +88,21 @@ public class newProfile extends HttpServlet{
 		ppst.setDate(13, CreatedDate);
 		System.out.println(ppst.execute());
 		
-		Data.currentProfile.ProfileID = profileID;
-		Data.currentProfile.ProfileName = profileName;
-		Data.currentProfile.Age = age;
-		Data.currentProfile.Gender = gender;
-		Data.currentProfile.HairColor = hairColor;
-		Data.currentProfile.Height = height;
-		Data.currentProfile.Weight = weight;
-		Data.currentProfile.Hobbies = Hobbies;
-		Data.currentProfile.CreationDate = (java.sql.Date) CreatedDate;
-		Data.currentProfile.LastModDate = (java.sql.Date) CreatedDate;
-		Data.currentProfile.DatinGeoRange = geoRange;
-		Data.currentProfile.DatingRangeStart = DatingAgeRangeStart;
-		Data.currentProfile.DatingRangeEnd = DatingAgeRangeEnd;
-		user.profiles.add(Data.currentProfile);
+		newProfile.ProfileID = profileID;
+		newProfile.ProfileName = profileName;
+		newProfile.Age = age;
+		newProfile.Gender = gender;
+		newProfile.HairColor = hairColor;
+		newProfile.Height = height;
+		newProfile.Weight = weight;
+		newProfile.Hobbies = Hobbies;
+		newProfile.CreationDate = (java.sql.Date) CreatedDate;
+		newProfile.LastModDate = (java.sql.Date) CreatedDate;
+		newProfile.DatinGeoRange = geoRange;
+		newProfile.DatingRangeStart = DatingAgeRangeStart;
+		newProfile.DatingRangeEnd = DatingAgeRangeEnd;
+		Data.currentProfile = newProfile;
+		user.profiles.add(newProfile);
 		
 		// adding it into profile
 		System.out.println("profile inserted");

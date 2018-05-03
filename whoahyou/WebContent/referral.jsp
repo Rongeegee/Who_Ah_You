@@ -54,9 +54,7 @@
 	    </div>
     <!--<h2 class ="profileName"> <c:out value = "${pro.getProfileID()}" /></h2></div></a>-->
 	</c:forEach>
-	<%
-		request.setAttribute("ssn", user.getSSN());
-	%>
+	
 	<a href="NewProfile.jsp"><div class="proImgBlock"><img src="images/addButton.jpg" class="defProImg"><h2 class ="profileName">new profile</h2></div></a>
 
 </div>

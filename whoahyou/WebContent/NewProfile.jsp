@@ -39,10 +39,12 @@
   	
     <h1 class="title">New Profile</h1>
 <!--  <jsp:include page="newProfilePic.jsp" />-->	
-	
+	<%
+		String ssn = (String)request.getAttribute("ssn");
+	%>
 	<form method = post action = newProfile>
       <div class="input-container">
-
+		<input type="hidden" name ="ssn" value = "<%=ssn %>"/>
         <input type="text" name= "profileID" id="profileID" required= "required">
 
         <label for="label">Profile ID</label>

@@ -17,8 +17,7 @@ import java.util.HashMap;
 @WebServlet("/LogInServlet")
 public class LogInServlet extends HttpServlet{
 //	private static final long serialVersionUID = 1L;
-	DBConnectionManager DBcon = Data.DBcon;
-	public User user = Data.user;
+	public User user;
 	public boolean valid = true;
     /**
      * @see HttpServlet#HttpServlet()
@@ -64,14 +63,14 @@ public class LogInServlet extends HttpServlet{
 	//validate the Customer users
 	protected void validateCustomer(HttpServletRequest req, HttpServletResponse res, String email, String pwd) 
 			throws ServletException, IOException, SQLException {
-		
+		DBConnectionManager DBcon = new DBConnectionManager();
 		String sql = "select * from person where Email=? and Password=?";
 		PreparedStatement st = DBcon.conn.prepareStatement(sql);
 		st.setString(1, email);
 		st.setString(2, pwd);
 		ResultSet result = st.executeQuery();
 		if(result.next()) {
-			Data.user = new User(DBcon.conn, email, pwd, "Customer",result.getString("SSN"),result.getString("FirstName"),result.getString("LastName"));
+			user = new User(DBcon.conn, email, pwd, "Customer", result.getString("SSN"),result.getString("FirstName"), result.getString("LastName"));
 			// pulling up corresponding profiles based on the user.
 			sql = "select * from profile where OwnerSSN = (select SSN from person where Email =?)";
 			PreparedStatement st1 = DBcon.conn.prepareStatement(sql);
@@ -79,12 +78,10 @@ public class LogInServlet extends HttpServlet{
 			ResultSet pR = st1.executeQuery();
 			// creating profiles for the user
 			while(pR.next()) {
+				user.ssn = pR.getString("OwnerSSN");
 				Profile newProfile = new Profile();
 				newProfile.ProfileID = pR.getString("ProfileID");
-				if(newProfile.ProfileName == null) {
-					newProfile.ProfileName = user.FirstName + " " + user.LastName;
-				}
-				newProfile.OwnerSSN = pR.getString("OwnerSSN");
+				newProfile.OwnerSSN = user.ssn;
 				newProfile.DatingRangeStart = Integer.parseInt(pR.getString("DatingAgeRangeStart"));
 				newProfile.DatingRangeEnd = Integer.parseInt(pR.getString("DatingAgeRangeEnd"));
 				newProfile.DatinGeoRange = Integer.parseInt(pR.getString("DatinGeoRange"));
@@ -96,8 +93,8 @@ public class LogInServlet extends HttpServlet{
 				newProfile.HairColor = pR.getString("HairColor");
 				newProfile.CreationDate = pR.getDate("CreationDate");
 				newProfile.LastModDate = pR.getDate("LastModDate");
-				newProfile.picPath = "images/profileImg/" + newProfile.ProfileID + ".jpg";
-				System.out.println(newProfile.picPath);
+					newProfile.picPath = "images/profileImg/" + newProfile.ProfileID + ".jpg";
+					System.out.println(newProfile.picPath);
 				
 				user.profiles.add(newProfile);
 			}
@@ -105,6 +102,7 @@ public class LogInServlet extends HttpServlet{
 	    	//HashMap<String, Profile> profiles = user.profiles;
 	    	//req.setAttribute("profiles", profiles); // (name, value)
 	    	//System.out.println(user.profiles.get(0).picPath);
+			DBcon.conn.close();
 			req.setAttribute("user", user);
 			req.getRequestDispatcher("profile.jsp").forward(req, res);
 		}

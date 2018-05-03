@@ -713,6 +713,35 @@ body {
   background-image: linear-gradient(to bottom, #E97A18, #E97A18);
   text-decoration: none;
 }
+#referButton {
+  background: #E53E30;
+  background-image: -webkit-linear-gradient(top, #E53E30, #E53E30);
+  background-image: -moz-linear-gradient(top, #E53E30, #E53E30);
+  background-image: -ms-linear-gradient(top, #E53E30, #E53E30);
+  background-image: -o-linear-gradient(top, #E53E30, #E53E30);
+  background-image: linear-gradient(to bottom, #E53E30, #E53E30);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 1px;
+  text-shadow: 0px 1px 3px #1010e6;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 30px;
+  padding: 11px 40px 11px 40px;
+  text-decoration: none;
+   width:32.5%;
+  margin-left:3px;
+}
+
+#referButton:hover {
+  background: #E97A18;
+  background-image: -webkit-linear-gradient(top, #E97A18, #E97A18);
+  background-image: -moz-linear-gradient(top, #E97A18, #E97A18);
+  background-image: -ms-linear-gradient(top, #E97A18, #E97A18);
+  background-image: -o-linear-gradient(top, #E97A18, #E97A18);
+  background-image: linear-gradient(to bottom, #E97A18, #E97A18);
+  text-decoration: none;
+}
 
 
 /**css for the date page**/

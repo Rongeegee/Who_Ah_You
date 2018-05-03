@@ -12,23 +12,23 @@ import java.sql.SQLException;
 
 public class Profile {
 	Connection conn;
-	String ProfileID;
-	String ProfileName;
-	String OwnerSSN;
-	int DatingRangeStart;
-	int DatingRangeEnd;
-	int DatinGeoRange;
-	int Age;
-	String Gender;
-	String Hobbies;
-	String Height;
-	int Weight;
-	String HairColor;
-	Date CreationDate;
-	Date LastModDate;
-	String picPath;
-	ArrayList<Profile> possibleMatches = new ArrayList<Profile>();
-	ArrayList<like> likers = new ArrayList<like>(); // key = email
+	public String ProfileID;
+	public String ProfileName;
+	public String OwnerSSN;
+	public int DatingRangeStart;
+	public int DatingRangeEnd;
+	public int DatinGeoRange;
+	public int Age;
+	public String Gender;
+	public String Hobbies;
+	public String Height;
+	public int Weight;
+	public String HairColor;
+	public Date CreationDate;
+	public Date LastModDate;
+	public String picPath;
+	public ArrayList<Profile> possibleMatches = new ArrayList<Profile>();
+	public ArrayList<like> likers = new ArrayList<like>(); // key = email
 	
 	public Profile() {
 		
