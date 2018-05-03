@@ -15,8 +15,10 @@ import java.util.HashMap;
  * Servlet implementation class LogInServlet
  */
 @WebServlet("/LogInServlet")
-public class LogInServlet extends HttpServlet {
+public class LogInServlet extends HttpServlet implements MainInfo {
 //	private static final long serialVersionUID = 1L;
+	DBConnectionManager DBcon = MainInfo.DBcon;
+	public User user = MainInfo.user;
 	public boolean valid = true;
     /**
      * @see HttpServlet#HttpServlet()
@@ -25,7 +27,9 @@ public class LogInServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-    
+    public User getUser() {
+    	return this.user;
+    }
     protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
     	String method = req.getMethod();
     	System.out.println(method);
@@ -60,14 +64,14 @@ public class LogInServlet extends HttpServlet {
 	//validate the Customer users
 	protected void validateCustomer(HttpServletRequest req, HttpServletResponse res, String email, String pwd) 
 			throws ServletException, IOException, SQLException {
-		DBConnectionManager DBcon = new DBConnectionManager();
+		
 		String sql = "select * from person where Email=? and Password=?";
 		PreparedStatement st = DBcon.conn.prepareStatement(sql);
 		st.setString(1, email);
 		st.setString(2, pwd);
 		ResultSet result = st.executeQuery();
 		if(result.next()) {
-			User user = new User(DBcon.conn, email, pwd, "Customer");
+			user = new User(DBcon.conn, email, pwd, "Customer",result.getString("SSN"),result.getString("FirstName"),result.getString("LastName"));
 			// pulling up corresponding profiles based on the user.
 			sql = "select * from profile where OwnerSSN = (select SSN from person where Email =?)";
 			PreparedStatement st1 = DBcon.conn.prepareStatement(sql);
@@ -77,6 +81,9 @@ public class LogInServlet extends HttpServlet {
 			while(pR.next()) {
 				Profile newProfile = new Profile();
 				newProfile.ProfileID = pR.getString("ProfileID");
+				if(newProfile.ProfileName == null) {
+					newProfile.ProfileName = user.FirstName + " " + user.LastName;
+				}
 				newProfile.OwnerSSN = pR.getString("OwnerSSN");
 				newProfile.DatingRangeStart = Integer.parseInt(pR.getString("DatingAgeRangeStart"));
 				newProfile.DatingRangeEnd = Integer.parseInt(pR.getString("DatingAgeRangeEnd"));
@@ -84,7 +91,7 @@ public class LogInServlet extends HttpServlet {
 				newProfile.Age = Integer.parseInt(pR.getString("Age"));
 				newProfile.Gender = pR.getString("M_F");
 				newProfile.Hobbies = pR.getString("Hobbies");
-				newProfile.Height = Integer.parseInt(pR.getString("Height"));
+				newProfile.Height = pR.getString("Height");
 				newProfile.Weight = Integer.parseInt(pR.getString("Weight"));
 				newProfile.HairColor = pR.getString("HairColor");
 				newProfile.CreationDate = pR.getDate("CreationDate");
@@ -98,8 +105,7 @@ public class LogInServlet extends HttpServlet {
 	    	//HashMap<String, Profile> profiles = user.profiles;
 	    	//req.setAttribute("profiles", profiles); // (name, value)
 	    	//System.out.println(user.profiles.get(0).picPath);
-			DBcon.conn.close();
-			req.setAttribute("profiles",user.profiles);
+			req.setAttribute("user", user);
 			req.getRequestDispatcher("profile.jsp").forward(req, res);
 		}
 		else {

@@ -36,11 +36,13 @@
   <div class="card">
     <h1 class="title">Profile(s)</h1>
     <%@ page import ="java.util.*"%>
+    <%@ page import = "whoahyou.User" %>
     <%@ page import = "whoahyou.Profile" %>
     <%@ page import = "javax.servlet.http.HttpServletRequest" %>
     <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %> 
     <% 
-    	List<Profile> profiles = (ArrayList<Profile>) request.getAttribute("profiles");
+    	User user = (User) request.getAttribute("user");
+    	List<Profile> profiles = user.profiles;
      %>
     <!--  generating forloop to display the pictures and names-->
     

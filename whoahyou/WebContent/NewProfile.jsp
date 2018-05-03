@@ -24,23 +24,31 @@
   <h2>sign up now to meet the love of your life</h2>
 </div>
 	
-<a style="color:white;"><button  class="pink_button_block" style="margin-left:80%;">&nbsp setting</button></a>
+<a style="color:white;"><button  class="pink_button_block" style="margin-left:80%;"> setting</button></a>
 	
+	<%@ page import = "whoahyou.User" %>
+	<%
+		User user = (User) request.getAttribute("user");
+	%>
 	
 <div> </div>	
 
 <div class="big_container">
 	<div class="card"></div>
   <div class="card">
-  	<form method = post action = newProfile enctype='multipart/form-data'>
+  	
     <h1 class="title">New Profile</h1>
 	<div style="width:30%;margin-left:5%;">
+	
 		<h4 style="font-size:20px">upload a profile image(optional)</h4><br>
-		<img src="images/defaultProfile.jpg" style="height:150px;width:120px;" id = "profilePic"/>
+		<form method = post action = newProfilePic enctype="multipart/form-data">
+		<img src="images/defaultProfile.jpg" style="height:150px;width:120px;" id = "profilePic"/></form>
 		<br><br>	
 		<input name = "profilePic" type="file" accept="image/*" id="imgPath" onchange="uploadImg()">
 		<br><br><br>
 	</div>
+	
+	<form method = post action = newProfile>
       <div class="input-container">
 
         <input type="text" name= "profileID" id="profileID" required= "required">
@@ -54,7 +62,12 @@
         <div class="bar"></div>
       </div>
       <div class="input-container">
-		<h6 style="font-size:20px;">age</h6>
+        <input type="text" name = "hairColor" id="hairColor" >
+        <label for="label">Hair Color</label>
+        <div class="bar"></div>
+      </div>
+      <div class="input-container">
+		<h6 style="font-size:20px;">Age</h6>
 		<br>
 		<select class="age" name = "profileAge" Id="profileAge"><option value="select">select</option></select>
 		<br><br>
@@ -123,7 +136,6 @@
 	  </div>
 	</div>
 	   <button class="pink_button_block" style="margin-left:40%;margin-top:20%;" onclick="verifyInput()"><span>done</span></button>
-
 	</form>
 	</div>
 	</div>

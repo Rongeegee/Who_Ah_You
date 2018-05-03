@@ -13,6 +13,7 @@ import java.sql.SQLException;
 public class Profile {
 	Connection conn;
 	String ProfileID;
+	String ProfileName;
 	String OwnerSSN;
 	int DatingRangeStart;
 	int DatingRangeEnd;
@@ -20,7 +21,7 @@ public class Profile {
 	int Age;
 	String Gender;
 	String Hobbies;
-	int Height;
+	String Height;
 	int Weight;
 	String HairColor;
 	Date CreationDate;
@@ -69,7 +70,7 @@ public class Profile {
 				matchProfile.Age = Integer.parseInt(pR.getString("Age"));
 				matchProfile.Gender = pR.getString("M_F");
 				matchProfile.Hobbies = pR.getString("Hobbies");
-				matchProfile.Height = Integer.parseInt(pR.getString("Height"));
+				matchProfile.Height = pR.getString("Height");
 				matchProfile.Weight = Integer.parseInt(pR.getString("Weight"));
 				matchProfile.HairColor = pR.getString("HairColor");
 				matchProfile.LastModDate = pR.getDate("LastModDate");
